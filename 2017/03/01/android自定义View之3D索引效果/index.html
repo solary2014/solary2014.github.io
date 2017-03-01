@@ -10,28 +10,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="效果图：
 我的小霸王太卡了。
-最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。
-首先来说一下思路，只要有了思路剩下的就是往里面套代码了。
-通过观察上面的效果图我们发现可以把右边的字母分为三种类型1、 手指没触摸的地方显示正常的样式2、">
+最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android自定义View之3D索引效果">
 <meta property="og:url" content="http://yoursite.com/2017/03/01/android自定义View之3D索引效果/index.html">
 <meta property="og:site_name" content="Solary的博客">
 <meta property="og:description" content="效果图：
 我的小霸王太卡了。
-最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。
-首先来说一下思路，只要有了思路剩下的就是往里面套代码了。
-通过观察上面的效果图我们发现可以把右边的字母分为三种类型1、 手指没触摸的地方显示正常的样式2、">
+最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。">
 <meta property="og:image" content="http://img.blog.csdn.net/20161211004615856?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20161211005108312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-03-01T03:12:47.985Z">
+<meta property="og:updated_time" content="2017-03-01T03:49:51.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android自定义View之3D索引效果">
 <meta name="twitter:description" content="效果图：
 我的小霸王太卡了。
-最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。
-首先来说一下思路，只要有了思路剩下的就是往里面套代码了。
-通过观察上面的效果图我们发现可以把右边的字母分为三种类型1、 手指没触摸的地方显示正常的样式2、">
+最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20161211004615856?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
   
     <link rel="alternative" href="/atom.xml" title="Solary的博客" type="application/atom+xml">
@@ -186,8 +180,7 @@
       
         <p>效果图：<br><img src="http://img.blog.csdn.net/20161211004615856?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
 <p>我的小霸王太卡了。</p>
-<p>最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。</p>
-<p>首先来说一下思路，只要有了思路剩下的就是往里面套代码了。</p>
+<p>最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。<br><a id="more"></a><br>首先来说一下思路，只要有了思路剩下的就是往里面套代码了。</p>
 <p>通过观察上面的效果图我们发现可以把右边的字母分为三种类型<br>1、 手指没触摸的地方显示正常的样式<br>2、手指触摸的位置 显示最大且完全不透明<br>3、手指触摸位置的上下附近位置 有放大且有透明度变化</p>
 <p>对这个效果有了直观的认识后，我们就可以在ondraw里面根据不同的条件来分别画出这三种状态，这里主要难理解的就是这些条件。这需要结合代码看下。</p>
 <p>so  我们开始撸码吧，</p>

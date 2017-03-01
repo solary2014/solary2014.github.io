@@ -8,23 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>android M Launcher之LauncherModel （一） | Solary的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。
-一、LauncherModel的创建
-要了解LauncherModel，我们要从Launch">
+  <meta name="description" content="众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android M Launcher之LauncherModel （一）">
 <meta property="og:url" content="http://yoursite.com/2017/03/01/android M Launcher之LauncherModel （一）/index.html">
 <meta property="og:site_name" content="Solary的博客">
-<meta property="og:description" content="众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。
-一、LauncherModel的创建
-要了解LauncherModel，我们要从Launch">
+<meta property="og:description" content="众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。">
 <meta property="og:image" content="http://img.blog.csdn.net/20161124004917751">
-<meta property="og:updated_time" content="2017-03-01T02:37:56.116Z">
+<meta property="og:updated_time" content="2017-03-01T03:49:25.713Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android M Launcher之LauncherModel （一）">
-<meta name="twitter:description" content="众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。
-一、LauncherModel的创建
-要了解LauncherModel，我们要从Launch">
+<meta name="twitter:description" content="众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20161124004917751">
   
     <link rel="alternative" href="/atom.xml" title="Solary的博客" type="application/atom+xml">
@@ -177,9 +171,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。</p>
-<pre><code>一、LauncherModel的创建
-</code></pre><p>要了解LauncherModel，我们要从LauncherModel的实例化开始。<br>LauncherModel是在Launcher应用程序被创建的时候，由LauncherApplication通过调用LauncherAppState的初始化方法实现的，即由LauncherAppState的getInstance方法调用LauncherAppState<br>的构造方法来实现，因此我们需要去看下LauncherAppState的构造方法</p>
+        <p>众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。<br><a id="more"></a><br>     一、LauncherModel的创建</p>
+<p>要了解LauncherModel，我们要从LauncherModel的实例化开始。<br>LauncherModel是在Launcher应用程序被创建的时候，由LauncherApplication通过调用LauncherAppState的初始化方法实现的，即由LauncherAppState的getInstance方法调用LauncherAppState<br>的构造方法来实现，因此我们需要去看下LauncherAppState的构造方法</p>
 <p>1、创建LauncherModel的准备工作<br>    LauncherModel作为中心枢纽，不可避免的要与大量的图片打交道。这些图片包括Launcher所管理的医用程序图标，以及一些桌面小部件的预览图标，Launcher为他们准备了一个图片缓存区（IconCache），因此LauncherModel首先需要持有IconCache的实例，另外，如果Launcher并不希望那么多的应用程序展示在其中，所以它还需要一个应用程序的筛选器实例（AppFilter）。于是，LauncherModel的准备工作实际上就是IconCache和AppFilter的创建过程。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> mIconCache = new IconCache(sContext, mInvariantDeviceProfile);</div><div class="line"> </div><div class="line">...</div><div class="line"></div><div class="line">        mAppFilter = AppFilter.loadByName(sContext.getString(R.string.app_filter_class));</div><div class="line">...</div></pre></td></tr></table></figure></p>
 <p>中间的代码都省略一下只看和Launchermodel有关的。</p>
 <p>2、创建LauncherModel的实例<br>    在完成了以上准备工作后，就可以进行LauncherModel的实例创建了</p>
