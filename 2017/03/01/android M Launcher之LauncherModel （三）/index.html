@@ -18,7 +18,7 @@ android M Launcher之LauncherModel （二）
 <meta property="og:description" content="通过前两篇的分析，我们已经知道了LauncherModel的初始化及工作流程，如果您还不熟悉的话请看前两篇博文android M Launcher之LauncherModel （一）
 android M Launcher之LauncherModel （二）
 了解了LauncherModel的工作过程后，我们继续来学习LauncherModel中提供的一些工具，从而了解Google工程师在自家系上怎">
-<meta property="og:updated_time" content="2017-03-01T03:46:44.418Z">
+<meta property="og:updated_time" content="2017-03-01T08:03:35.616Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android M Launcher之LauncherModel （三）">
 <meta name="twitter:description" content="通过前两篇的分析，我们已经知道了LauncherModel的初始化及工作流程，如果您还不熟悉的话请看前两篇博文android M Launcher之LauncherModel （一）
@@ -175,8 +175,8 @@ android M Launcher之LauncherModel （二）
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>通过前两篇的分析，我们已经知道了LauncherModel的初始化及工作流程，如果您还不熟悉的话请看前两篇博文<br><a href="http://blog.csdn.net/asd1031/article/details/53314252" target="_blank" rel="external">android M Launcher之LauncherModel （一）</a></p>
-<p><a href="http://blog.csdn.net/asd1031/article/details/53344724" target="_blank" rel="external">android M Launcher之LauncherModel （二）</a></p>
+        <p>通过前两篇的分析，我们已经知道了LauncherModel的初始化及工作流程，如果您还不熟悉的话请看前两篇博文<br><a href="http://www.52solary.cn/2017/03/01/android%20M%20Launcher%E4%B9%8BLauncherModel%20%EF%BC%88%E4%B8%80%EF%BC%89/" target="_blank" rel="external">android M Launcher之LauncherModel （一）</a></p>
+<p><a href="http://www.52solary.cn/2017/03/01/android%20M%20Launcher%E4%B9%8BLauncherModel%20%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="external">android M Launcher之LauncherModel （二）</a></p>
 <p>了解了LauncherModel的工作过程后，我们继续来学习LauncherModel中提供的一些工具，从而了解Google工程师在自家系上怎么开发的。</p>
 <a id="more"></a>
 <p>1、线程等待waitForIdle</p>
@@ -235,8 +235,7 @@ android M Launcher之LauncherModel （二）
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">final LauncherAppState app = LauncherAppState.getInstance();</div><div class="line">           final InvariantDeviceProfile profile = app.getInvariantDeviceProfile();</div><div class="line">           // XXX: review this</div><div class="line">           Collections.sort(workspaceItems, new Comparator&lt;ItemInfo&gt;() &#123;</div><div class="line">               @Override</div><div class="line">               public int compare(ItemInfo lhs, ItemInfo rhs) &#123;</div><div class="line">                   int cellCountX = (int) profile.numColumns;</div><div class="line">                   int cellCountY = (int) profile.numRows;</div><div class="line">                   int screenOffset = cellCountX * cellCountY;</div><div class="line">                   int containerOffset = screenOffset * (Launcher.SCREEN_COUNT + 1); // +1 hotseat</div><div class="line">                   long lr = (lhs.container * containerOffset + lhs.screenId * screenOffset +</div><div class="line">                           lhs.cellY * cellCountX + lhs.cellX);</div><div class="line">                   long rr = (rhs.container * containerOffset + rhs.screenId * screenOffset +</div><div class="line">                           rhs.cellY * cellCountX + rhs.cellX);</div><div class="line">                   return (int) (lr - rr);</div><div class="line">               &#125;</div><div class="line">           &#125;);</div></pre></td></tr></table></figure>
 <p>这个是java对一个数组的排序方式。</p>
 <p>以上就是LoaderTask提供的一些重要工具，通过学习Google的源码我们也可以把它应用到实际的开发中去，提高自己代码的健壮性。</p>
-<p>好了，从第一篇开始到这篇结束，我们终于把LauncherModel的整个工作流程走了一遍。以下是整个LauncherModel系列的索引</p>
-<p>一  、<a href="http://blog.csdn.net/asd1031/article/details/53314252" target="_blank" rel="external">LauncherModel的的实例化</a><br>二   、 <a href="http://blog.csdn.net/asd1031/article/details/53344724" target="_blank" rel="external">LauncherModel数据的加载流程 </a><br>三  、<a href="http://blog.csdn.net/asd1031/article/details/53352498" target="_blank" rel="external">LauncherModel中一些工具的介绍</a></p>
+<p>好了，从第一篇开始到这篇结束，我们终于把LauncherModel的整个工作流程走了一遍。</p>
 
       
 
