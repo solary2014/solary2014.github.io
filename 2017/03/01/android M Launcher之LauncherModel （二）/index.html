@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>Solary的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="上一篇我们通过LauncherModel的创建 ，实例化，以及与LauncherModel之间的沟通方式。初步了解了LauncherModel一些功能及用法，如果对LauncherModel一系列初始化动作还不了解的可以看
+android M Launcher之LauncherModel （一）
+好了 接下来我们继续分析，大家都知道 LauncherModel是Launcher的数据中心，但是数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Solary的博客">
+<meta property="og:url" content="http://yoursite.com/2017/03/01/android M Launcher之LauncherModel （二）/index.html">
+<meta property="og:site_name" content="Solary的博客">
+<meta property="og:description" content="上一篇我们通过LauncherModel的创建 ，实例化，以及与LauncherModel之间的沟通方式。初步了解了LauncherModel一些功能及用法，如果对LauncherModel一系列初始化动作还不了解的可以看
+android M Launcher之LauncherModel （一）
+好了 接下来我们继续分析，大家都知道 LauncherModel是Launcher的数据中心，但是数据">
+<meta property="og:image" content="http://img.blog.csdn.net/20161124214606797">
+<meta property="og:image" content="http://img.blog.csdn.net/20161124223046245">
+<meta property="og:image" content="http://img.blog.csdn.net/20161125221643230">
+<meta property="og:image" content="http://img.blog.csdn.net/20161125234249173">
+<meta property="og:image" content="http://img.blog.csdn.net/20161125233307747">
+<meta property="og:image" content="http://img.blog.csdn.net/20161125235502430">
+<meta property="og:updated_time" content="2017-03-01T02:27:40.161Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Solary的博客">
+<meta name="twitter:description" content="上一篇我们通过LauncherModel的创建 ，实例化，以及与LauncherModel之间的沟通方式。初步了解了LauncherModel一些功能及用法，如果对LauncherModel一系列初始化动作还不了解的可以看
+android M Launcher之LauncherModel （一）
+好了 接下来我们继续分析，大家都知道 LauncherModel是Launcher的数据中心，但是数据">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161124214606797">
+  
+    <link rel="alternative" href="/atom.xml" title="Solary的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.2d7529.css">
+  <style type="text/css">
+  
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+<div class="overlay" style="background: #4d4d4d"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			 <img src="https://avatars0.githubusercontent.com/u/6939691?v=3&amp;u=acf2ea20b3b98d117cdf4c5b5c7a93b75a419058&amp;s=400" class="js-avatar show" style="width: 100%;height: 100%;opacity: 1;">
+		</a>
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Solary</a></h1>
+		</hgroup>
+		
+		<p class="header-subtitle">心如猛虎 细嗅蔷薇</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+				<li><a href="/tags/随笔/">随笔</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+    		
+    			
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			
+            
+    			
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="https://avatars0.githubusercontent.com/u/6939691?v=3&amp;u=acf2ea20b3b98d117cdf4c5b5c7a93b75a419058&amp;s=400" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">Solary</h1>
+			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>心如猛虎 细嗅蔷薇<i class="icon icon-quo-right"></i></p>
+			
+			
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+			        
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 50%">
+				
+				
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-android M Launcher之LauncherModel （二）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上一篇我们通过LauncherModel的创建 ，实例化，以及与LauncherModel之间的沟通方式。初步了解了LauncherModel一些功能及用法，如果对LauncherModel一系列初始化动作还不了解的可以看</p>
+<p><a href="http://blog.csdn.net/asd1031/article/details/53314252" target="_blank" rel="external">android M Launcher之LauncherModel （一）</a></p>
+<p>好了 接下来我们继续分析，大家都知道 LauncherModel是Launcher的数据中心，但是数据中心的数据是怎么加载出来的呢，这里就要说到LoaderTask了，它是LauncherModel的核心任务。</p>
+<p>1、LoaderTask的定义、属性及构造</p>
+<p>要了解一个类的功能和作用，我们通常从该类的定义及其定义的成员变量开始，就好比了解一个人最先看到的肯定是他的外貌了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">private class LoaderTask implements Runnable &#123;</div><div class="line">       private Context mContext;</div><div class="line">       boolean mIsLoadingAndBindingWorkspace;</div><div class="line">       private boolean mStopped;</div><div class="line">       boolean mLoadAndBindStepFinished;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>由定义可以看出LoaderTask是一个实现Runnable 接口的类，我们都知道Runnable 是一个任务，它可以被抛到线程中执行，也可以被抛到进程的处理器中执行，通过实现Runnable接口来实现多线程以及线程间的通信是比较常用的做法。</p>
+<p>LoaderTask的执行需要Launcher应用程序提供必要的支持，而外界也需要知道Loaderask的执行状态，因此在LoaderTask中，以成员变量的方式保存了LoaderTask执行所必需的支持以及自身相关的状态。</p>
+<ul>
+<li><p>mIsLoadingAndBindingWorkspace ：它是LoaderTask执行动作的指示性变量，当正在加载和绑定桌面数据时它为true，当动作执行完成后它为false。</p>
+</li>
+<li><p>mStopped ：标示整个加载任务是否已经被强制停止，LoaderTask对外提供了一个停止加载的接口，如果外部通过这个接口来停止一个加载任务，那么它将为true，默认是false</p>
+</li>
+<li><p>mLoadAndBindStepFinished  ： 通过它可以知道整个加载任务所涉及的动作已经执行完毕</p>
+</li>
+</ul>
+<p>2、LoaderTask的run接口实现<br>LoaderTask是一个Run那边了接口的实现，每一个Runnable接口的实现都需要实现run方法，LoaderTask也不例外，当LoaderTask作为一个任务在某一个线程中运行时，实际就是这个线程调用了它的run方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">public void run() &#123;</div><div class="line">           synchronized (mLock) &#123;</div><div class="line">               if (mStopped) &#123;</div><div class="line">                   return;</div><div class="line">               &#125;</div><div class="line">               mIsLoaderTaskRunning = true;</div><div class="line">           &#125;</div><div class="line">           // Optimize for end-user experience: if the Launcher is up and // running with the</div><div class="line">           // All Apps interface in the foreground, load All Apps first. Otherwise, load the</div><div class="line">           // workspace first (default).</div><div class="line">           keep_running:</div><div class="line">           &#123;</div><div class="line">               if (DEBUG_LOADERS) Log.d(TAG, &quot;step 1: loading workspace&quot;);</div><div class="line">               loadAndBindWorkspace();</div><div class="line"></div><div class="line">               if (mStopped) &#123;</div><div class="line">                   break keep_running;</div><div class="line">               &#125;</div><div class="line"></div><div class="line">               waitForIdle();</div><div class="line"></div><div class="line">               // second step</div><div class="line">               if (DEBUG_LOADERS) Log.d(TAG, &quot;step 2: loading all apps&quot;);</div><div class="line">               loadAndBindAllApps();</div><div class="line">           &#125;</div><div class="line"></div><div class="line">           // Clear out this reference, otherwise we end up holding it until all of the</div><div class="line">           // callback runnables are done.</div><div class="line">           mContext = null;</div><div class="line"></div><div class="line">           synchronized (mLock) &#123;</div><div class="line">               // If we are still the last one to be scheduled, remove ourselves.</div><div class="line">               if (mLoaderTask == this) &#123;</div><div class="line">                   mLoaderTask = null;</div><div class="line">               &#125;</div><div class="line">               mIsLoaderTaskRunning = false;</div><div class="line">               mHasLoaderCompletedOnce = true;</div><div class="line">           &#125;</div><div class="line">       &#125;</div></pre></td></tr></table></figure>
+<p>这里主要做了两件事<br>1、loading workspace<br>2、loading all apps<br>其他的就是一些成员变量的赋值。</p>
+<p>首先loading workspace 我们画流程图来看：<br><img src="http://img.blog.csdn.net/20161124214606797" alt="这里写图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">private void loadAndBindWorkspace() &#123;</div><div class="line">            mIsLoadingAndBindingWorkspace = true;</div><div class="line"></div><div class="line">            // Load the workspace</div><div class="line">            if (DEBUG_LOADERS) &#123;</div><div class="line">                Log.d(TAG, &quot;loadAndBindWorkspace mWorkspaceLoaded=&quot; + mWorkspaceLoaded);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            if (!mWorkspaceLoaded) &#123;</div><div class="line">                loadWorkspace();</div><div class="line">                synchronized (LoaderTask.this) &#123;</div><div class="line">                    if (mStopped) &#123;</div><div class="line">                        return;</div><div class="line">                    &#125;</div><div class="line">                    mWorkspaceLoaded = true;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            // Bind the workspace</div><div class="line">            bindWorkspace(-1);</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>结合上面代码 可以发现 它又分为两步<br>1、生成桌面数据loadWorkspace；<br>2、绑定桌面配置数据bindWorkspace。</p>
+<p>loadWorkspace</p>
+<p>Launcher桌面的数据主要包括来自Launcher数据库的各种表，loadWorkspace方法将负责从这些数据库表中读取数据并转译为Launcher桌面项的数据结构。<br>这个代码比较多同样先上流程图。<br><img src="http://img.blog.csdn.net/20161124223046245" alt="这里写图片描述"></p>
+<ul>
+<li><strong>获取系统服务一节设备属性并调整桌面页顺序</strong></li>
+</ul>
+<p>在加载数据桌面数据前，loadWorkspace 方法必需获取到必要的支持，因为loadWorkspace方法主要处理应用程序包的相关信息，所以首先要获取包管理服务，其次<br>   需要确定快捷方式或者桌面小部件的位置，因此它还需要获取屏幕的宽和高代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">final Context context = mContext;</div><div class="line">          final ContentResolver contentResolver = context.getContentResolver();</div><div class="line">          //获取包管理服务，并查询当前是否处于安全模式</div><div class="line">          final PackageManager manager = context.getPackageManager();</div><div class="line">          final boolean isSafeMode = manager.isSafeMode();</div><div class="line">          //获取Launcher定制的应用程序管理接口</div><div class="line">          final LauncherAppsCompat launcherApps = LauncherAppsCompat.getInstance(context);</div><div class="line">          final boolean isSdCardReady = context.registerReceiver(null,</div><div class="line">                  new IntentFilter(StartupReceiver.SYSTEM_READY)) != null;</div><div class="line">          //获取桌面有多少行，多少列</div><div class="line">          LauncherAppState app = LauncherAppState.getInstance();</div><div class="line">          InvariantDeviceProfile profile = app.getInvariantDeviceProfile();</div><div class="line">          int countX = profile.numColumns;</div><div class="line">          int countY = profile.numRows;</div><div class="line"></div><div class="line">          if (MigrateFromRestoreTask.ENABLED &amp;&amp; MigrateFromRestoreTask.shouldRunTask(mContext)) &#123;</div><div class="line">              long migrationStartTime = System.currentTimeMillis();</div><div class="line">              Log.v(TAG, &quot;Starting workspace migration after restore&quot;);</div><div class="line">              try &#123;</div><div class="line">                  //根据实际情况调整桌面页的顺序</div><div class="line">                  MigrateFromRestoreTask task = new MigrateFromRestoreTask(mContext);</div><div class="line">                  // Clear the flags before starting the task, so that we do not run the task</div><div class="line">                  // again, in case there was an uncaught error.</div><div class="line">                  MigrateFromRestoreTask.clearFlags(mContext);</div><div class="line">                  task.execute();</div><div class="line">              &#125; catch (Exception e) &#123;</div><div class="line">                  Log.e(TAG, &quot;Error during grid migration&quot;, e);</div><div class="line"></div><div class="line">                  // Clear workspace.</div><div class="line">                  mFlags = mFlags | LOADER_FLAG_CLEAR_WORKSPACE;</div><div class="line">              &#125;</div><div class="line">              Log.v(TAG, &quot;Workspace migration completed in &quot;</div><div class="line">                      + (System.currentTimeMillis() - migrationStartTime));</div><div class="line">          &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>根据输入的标志对数据进行必要的预处理</strong><br>在不同的场景下，LoadWorkspace可能要对需要处理的数据来源进行必要的处理，这取决于mFlags 标志，代码如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//如果mFlags中包含LOADER_FLAG_CLEAR_WORKSPACE，则清理原有的数据</div><div class="line">           if ((mFlags &amp; LOADER_FLAG_CLEAR_WORKSPACE) != 0) &#123;</div><div class="line">               Launcher.addDumpLog(TAG, &quot;loadWorkspace: resetting launcher database&quot;, true);</div><div class="line">               LauncherAppState.getLauncherProvider().deleteDatabase();</div><div class="line">           &#125;</div><div class="line"></div><div class="line">           // Make sure the default workspace is loaded</div><div class="line">           //确保默认数据得以加载</div><div class="line">           Launcher.addDumpLog(TAG, &quot;loadWorkspace: loading default favorites&quot;, false);</div><div class="line">           LauncherAppState.getLauncherProvider().loadDefaultFavoritesIfNecessary();</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>清理历史数据并准备必要数据</strong><br>在每次加载桌面数据时，需要对这些数据区域进行清理 这个平时我们往listview中添加数据前要清理一样的道理， 它主要在<code>clearSBgDataStructures</code> 中完成</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">      * Clears all the sBg data structures</div><div class="line">      */</div><div class="line">     private void clearSBgDataStructures() &#123;</div><div class="line">         synchronized (sBgLock) &#123;</div><div class="line">             sBgWorkspaceItems.clear();//清理桌面项列表</div><div class="line">             sBgAppWidgets.clear();//清理桌面快捷方式列表</div><div class="line">             sBgFolders.clear();//清理文件夹数据列表</div><div class="line">             sBgItemsIdMap.clear();//清理桌面项字段</div><div class="line">             sBgWorkspaceScreens.clear();//清理桌面页记录列表</div><div class="line">         &#125;</div><div class="line">     &#125;</div></pre></td></tr></table></figure>
+<p>完成清理后loadWorkspace方法需要知道当前设备中安装了多少应用程序，除了这些外，在加载桌面桌面数据的过程中会产出一些过程数据，他们保持在其他区域代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">final HashMap&lt;String, Integer&gt; installingPkgs = PackageInstallerCompat</div><div class="line">                        .getInstance(mContext).updateAndGetActiveSessionCache();</div><div class="line">                sBgWorkspaceScreens.addAll(loadWorkspaceScreensDb(mContext));</div><div class="line"></div><div class="line">                final ArrayList&lt;Long&gt; itemsToRemove = new ArrayList&lt;Long&gt;();</div><div class="line">                final ArrayList&lt;Long&gt; restoredRows = new ArrayList&lt;Long&gt;();</div></pre></td></tr></table></figure>
+<p> 有了上面这些基础后 ，接下来就开始加载数据了。</p>
+<ul>
+<li><strong>查询Favorites表数据库并准备桌面占用情况标志映射</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">final Uri contentUri = LauncherSettings.Favorites.CONTENT_URI;</div><div class="line">            if (DEBUG_LOADERS) Log.d(TAG, &quot;loading model from &quot; + contentUri);</div><div class="line">            final Cursor c = contentResolver.query(contentUri, null, null, null, null);</div><div class="line"></div><div class="line">            // +1 for the hotseat (it can be larger than the workspace)</div><div class="line">            // Load workspace in reverse order to ensure that latest items are loaded first (and</div><div class="line">            // before any earlier duplicates)</div><div class="line">            final LongArrayMap&lt;ItemInfo[][]&gt; occupied = new LongArrayMap&lt;&gt;();</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>从Cursor中获取桌面项类型itemType等数据项</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">int itemType = c.getInt(itemTypeIndex);//桌面项类型</div><div class="line">                          boolean restored = 0 != c.getInt(restoredIndex);//是否已经恢复</div><div class="line">                          boolean allowMissingTarget = false;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>应用程序入口及其他入口快捷方式的处理</strong></li>
+</ul>
+<p>在这里Launcher需要处理桌面上快捷方式的记录，将其转换成Launcher可以处理的对象。如下图<br><img src="http://img.blog.csdn.net/20161125221643230" alt="这里写图片描述"></p>
+<ul>
+<li><p><strong>处理文件夹记录处理</strong></p>
+<p>桌面文件只需要处理好文件夹的标题，位置以及所处的容器即可。</p>
+</li>
+<li><p><strong>桌面小部件记录处理</strong> </p>
+</li>
+</ul>
+<p> 这里或处理桌面快捷方式类似，可以参考处理桌面快捷方式的流程来看处理桌面小部件。</p>
+<ul>
+<li><strong>从数据库中清理需要删除的数据项</strong><br>通过以上处理步骤，可能产生依稀需要删除的记录如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">if (itemsToRemove.size() &gt; 0) &#123;</div><div class="line">                   // Remove dead items</div><div class="line">                   contentResolver.delete(LauncherSettings.Favorites.CONTENT_URI,</div><div class="line">                           Utilities.createDbSelectionQuery(</div><div class="line">                                   LauncherSettings.Favorites._ID, itemsToRemove), null);</div><div class="line">                   if (DEBUG_LOADERS) &#123;</div><div class="line">                       Log.d(TAG, &quot;Removed = &quot; + Utilities.createDbSelectionQuery(</div><div class="line">                               LauncherSettings.Favorites._ID, itemsToRemove));</div><div class="line">                   &#125;</div><div class="line"></div><div class="line">                   // Remove any empty folder</div><div class="line">                   for (long folderId : LauncherAppState.getLauncherProvider()</div><div class="line">                           .deleteEmptyFolders()) &#123;</div><div class="line">                       sBgWorkspaceItems.remove(sBgFolders.get(folderId));</div><div class="line">                       sBgFolders.remove(folderId);</div><div class="line">                       sBgItemsIdMap.remove(folderId);</div><div class="line">                   &#125;</div><div class="line">               &#125;</div><div class="line"></div><div class="line">               // Sort all the folder items and make sure the first 3 items are high resolution.</div><div class="line">               for (FolderInfo folder : sBgFolders) &#123;</div><div class="line">                   Collections.sort(folder.contents, Folder.ITEM_POS_COMPARATOR);</div><div class="line">                   int pos = 0;</div><div class="line">                   for (ShortcutInfo info : folder.contents) &#123;</div><div class="line">                       if (info.usingLowResIcon) &#123;</div><div class="line">                           info.updateIcon(mIconCache, false);</div><div class="line">                       &#125;</div><div class="line">                       pos++;</div><div class="line">                       if (pos &gt;= FolderIcon.NUM_ITEMS_IN_PREVIEW) &#123;</div><div class="line">                           break;</div><div class="line">                       &#125;</div><div class="line">                   &#125;</div><div class="line">               &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>置恢复状态为以恢复</strong><br>有些记录可能来自备份与恢复的过程，如果当前处理的记录属于这种，并且已经得到完整的恢复那么这些记录ID都会被缓存在restoredRows中，在处理往需要删除的记录后，就要将restoredRows中指定记录恢复状态置为0.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">if (restoredRows.size() &gt; 0) &#123;</div><div class="line">                  // Update restored items that no longer require special handling</div><div class="line">                  ContentValues values = new ContentValues();</div><div class="line">                  values.put(LauncherSettings.Favorites.RESTORED, 0);</div><div class="line">                  contentResolver.update(LauncherSettings.Favorites.CONTENT_URI, values,</div><div class="line">                          Utilities.createDbSelectionQuery(</div><div class="line">                                  LauncherSettings.Favorites._ID, restoredRows), null);</div><div class="line">              &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>处理安装在SDCARD上的应用程序</strong>  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">if (!isSdCardReady &amp;&amp; !sPendingPackages.isEmpty()) &#123;</div><div class="line">                  context.registerReceiver(new AppsAvailabilityCheck(),</div><div class="line">                          new IntentFilter(StartupReceiver.SYSTEM_READY),</div><div class="line">                          null, sWorker);</div><div class="line">              &#125;</div></pre></td></tr></table></figure>
+<p>当sPendingPackages中有了记录并且SDCARD没有挂载好的时候，Launcher注册相关的广播接收器等待SDCARD的挂载完成。</p>
+<p>好了 LoadWorkspace分析就完成了，真心不容易呀。</p>
+<p>再接再厉 我们看<strong>bindWorkspace</strong></p>
+<p>上面我们已经准备好了需要加载的数据，那么接下来需要做的就是将这些数据发送到Launcher，让它将这些数据转化为一个个可以显示的view，这个过程由bindWorkspace来完成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">private void bindWorkspace(int synchronizeBindPage)</div></pre></td></tr></table></figure>
+<ul>
+<li>synchronizeBindPage  如果它的值小于0说明需要对所有桌面页进行刷新，如果大于等于0，则对指定页进行刷新。</li>
+</ul>
+<p>在画图看下bindWorkspace的流程。发现Xmind用的越来越6了 O(∩_∩)O哈哈~<br><img src="http://img.blog.csdn.net/20161125234249173" alt="这里写图片描述"></p>
+<p>在加载桌面数据的过程中，已经把需要加载的数据分门别类的放在不同的数据缓冲区。由于LauncherModel的LoaderTask可以因为LauncherModel执行不同的任务而被多次实例化，这将会引起缓冲区数据共享问题，为了解决这个问题每次绑定数据的时候都要临时将数据缓冲区的数据备份，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">// Save a copy of all the bg-thread collections</div><div class="line">           //桌面数据项列表</div><div class="line">           ArrayList&lt;ItemInfo&gt; workspaceItems = new ArrayList&lt;ItemInfo&gt;();</div><div class="line">           //桌面小部件数据项列表</div><div class="line">           ArrayList&lt;LauncherAppWidgetInfo&gt; appWidgets =</div><div class="line">                   new ArrayList&lt;LauncherAppWidgetInfo&gt;();</div><div class="line">           //经过排序的桌面页索引列表</div><div class="line">           ArrayList&lt;Long&gt; orderedScreenIds = new ArrayList&lt;Long&gt;();</div><div class="line"></div><div class="line">           final LongArrayMap&lt;FolderInfo&gt; folders;</div><div class="line">           final LongArrayMap&lt;ItemInfo&gt; itemsIdMap;</div><div class="line">           //缓冲区数据复制</div><div class="line">           synchronized (sBgLock) &#123;</div><div class="line">               workspaceItems.addAll(sBgWorkspaceItems);</div><div class="line">               appWidgets.addAll(sBgAppWidgets);</div><div class="line">               orderedScreenIds.addAll(sBgWorkspaceScreens);</div><div class="line"></div><div class="line">               folders = sBgFolders.clone();</div><div class="line">               itemsIdMap = sBgItemsIdMap.clone();</div><div class="line">           &#125;</div><div class="line">           //获取Launcher当前所处的页面索引</div><div class="line">           final boolean isLoadingSynchronously =</div><div class="line">                   synchronizeBindPage != PagedView.INVALID_RESTORE_PAGE;</div><div class="line">           int currScreen = isLoadingSynchronously ? synchronizeBindPage :</div><div class="line">                   oldCallbacks.getCurrentWorkspaceScreen();</div><div class="line">           if (currScreen &gt;= orderedScreenIds.size()) &#123;</div><div class="line">               // There may be no workspace screens (just hotseat items and an empty page).</div><div class="line">               currScreen = PagedView.INVALID_RESTORE_PAGE;</div><div class="line">           &#125;</div><div class="line">           final int currentScreen = currScreen;</div><div class="line">           final long currentScreenId = currentScreen &lt; 0</div><div class="line">                   ? INVALID_SCREEN_ID : orderedScreenIds.get(currentScreen);</div></pre></td></tr></table></figure>
+<p>分离当前页面与其他页面的数据并通知Launcher加载开始</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">// Separate the items that are on the current screen, and all the other remaining items</div><div class="line">            //分类数据区定义</div><div class="line">            ArrayList&lt;ItemInfo&gt; currentWorkspaceItems = new ArrayList&lt;ItemInfo&gt;();</div><div class="line">            ArrayList&lt;ItemInfo&gt; otherWorkspaceItems = new ArrayList&lt;ItemInfo&gt;();</div><div class="line">            ArrayList&lt;LauncherAppWidgetInfo&gt; currentAppWidgets =</div><div class="line">                    new ArrayList&lt;LauncherAppWidgetInfo&gt;();</div><div class="line">            ArrayList&lt;LauncherAppWidgetInfo&gt; otherAppWidgets =</div><div class="line">                    new ArrayList&lt;LauncherAppWidgetInfo&gt;();</div><div class="line">            LongArrayMap&lt;FolderInfo&gt; currentFolders = new LongArrayMap&lt;&gt;();</div><div class="line">            LongArrayMap&lt;FolderInfo&gt; otherFolders = new LongArrayMap&lt;&gt;();</div><div class="line">            //分类桌面项数据</div><div class="line">            filterCurrentWorkspaceItems(currentScreenId, workspaceItems, currentWorkspaceItems,</div><div class="line">                    otherWorkspaceItems);</div><div class="line">            //分类小部件数据</div><div class="line">            filterCurrentAppWidgets(currentScreenId, appWidgets, currentAppWidgets,</div><div class="line">                    otherAppWidgets);</div><div class="line">            filterCurrentFolders(currentScreenId, itemsIdMap, folders, currentFolders,</div><div class="line">                    otherFolders);</div><div class="line">            //对数据进行排序</div><div class="line">            sortWorkspaceItemsSpatially(currentWorkspaceItems);</div><div class="line">            sortWorkspaceItemsSpatially(otherWorkspaceItems);</div><div class="line"></div><div class="line">            // Tell the workspace that we&apos;re about to start binding items</div><div class="line">            //在主线程上执行通知Launcher绑定开始任务</div><div class="line">            r = new Runnable() &#123;</div><div class="line">                public void run() &#123;</div><div class="line">                    Callbacks callbacks = tryGetCallbacks(oldCallbacks);</div><div class="line">                    if (callbacks != null) &#123;</div><div class="line">                        callbacks.startBinding();</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;;</div><div class="line">            runOnMainThread(r);</div></pre></td></tr></table></figure>
+<p>LoaderTask在绑定数据的过程中会产生不同的过程状态信息，这些信息会通过回调接口通知LauncherModel对数据处理的状态信息，比如绑定数据之前，会通过 startBinding接口通知Launcher准备开始绑定数据，在绑定数据结束时通过Launcher实现的finishBindingItems通知Launcher数据绑定完成等。这些回调方法的实现绝大多数需要处理界面上的view因此他们都需要在UI线程中。</p>
+<p>通过结束绑定为例来说明下这个过程：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">// Tell the workspace that we&apos;re done binding items</div><div class="line">           //实现包含了结束绑定通知的任务</div><div class="line">           r = new Runnable() &#123;</div><div class="line">               public void run() &#123;</div><div class="line">                   Callbacks callbacks = tryGetCallbacks(oldCallbacks);</div><div class="line">                   if (callbacks != null) &#123;</div><div class="line">                       callbacks.finishBindingItems();</div><div class="line">                   &#125;</div><div class="line">                   //设置加载以及绑定任务结束标志</div><div class="line">                   mIsLoadingAndBindingWorkspace = false;</div><div class="line"></div><div class="line">                   // Run all the bind complete runnables after workspace is bound.</div><div class="line">                   if (!mBindCompleteRunnables.isEmpty()) &#123;</div><div class="line">                       synchronized (mBindCompleteRunnables) &#123;</div><div class="line">                           for (final Runnable r : mBindCompleteRunnables) &#123;</div><div class="line">                               runOnWorkerThread(r);</div><div class="line">                           &#125;</div><div class="line">                           mBindCompleteRunnables.clear();</div><div class="line">                       &#125;</div><div class="line">                   &#125;</div><div class="line"></div><div class="line">                   // If we&apos;re profiling, ensure this is the last thing in the queue.</div><div class="line">                   if (DEBUG_LOADERS) &#123;</div><div class="line">                       Log.d(TAG, &quot;bound workspace in &quot;</div><div class="line">                               + (SystemClock.uptimeMillis() - t) + &quot;ms&quot;);</div><div class="line">                   &#125;</div><div class="line"></div><div class="line">               &#125;</div><div class="line">           &#125;;</div><div class="line">           if (isLoadingSynchronously) &#123;</div><div class="line">               synchronized (mDeferredBindRunnables) &#123;</div><div class="line">                   mDeferredBindRunnables.add(r);</div><div class="line">               &#125;</div><div class="line">           &#125; else &#123;</div><div class="line">               //在主线程中执行该任务</div><div class="line">               runOnMainThread(r);</div><div class="line">           &#125;</div></pre></td></tr></table></figure>
+<p>在完成了上面一系列操作后，最新的数据就完成了从数据库记录到桌面上可见的图标的转换。</p>
+<p>终于到loading all apps了<br>它的实现方法为loadAndBindAllApps()<br> 这个方法没有参数也没有返回值 它只是一个主干通过调用其他两个方法来完成应用程序猜的的数据加载及绑定。<br> <img src="http://img.blog.csdn.net/20161125233307747" alt="这里写图片描述">  </p>
+<p>加载所有应用程序菜单的过程和加载桌面的过程一样，都是由加载数据和绑定数据。<br>当第一次对应用程序菜单数据进行处理的时候，需要将这两个过程整合执行，如果之前已经加载了应用程序加载任务，只需要执行绑定动作。</p>
+<p>和加载桌面一样 我们首先看下loadAllApps()</p>
+<p><img src="http://img.blog.csdn.net/20161125235502430" alt="这里写图片描述"></p>
+<ul>
+<li><strong>获取账户并清理缓存</strong></li>
+</ul>
+<p>android系统提供了多账户的概念，不同的账户下可以使用的应用程序是不同的，因此Launcher需要注意这个细节，在不同账户下处理不同的应用程序列表信息，所有在加载应用程序列表的时候需要获取当前设备上的所有账户。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">final List&lt;UserHandleCompat&gt; profiles = mUserManager.getUserProfiles();</div><div class="line"></div><div class="line">  // Clear the list of apps</div><div class="line">  mBgAllAppsList.clear();</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>获取应用程序入口信息</strong></li>
+</ul>
+<p>Android5.0后提供了LauncherApps的服务，所以只需要通过LauncherApps就可以获取到应用程序的入口信息了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">final List&lt;LauncherActivityInfoCompat&gt; apps = mLauncherApps.getActivityList(null, user);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>将应用程序信息加入缓存区</strong></li>
+</ul>
+<p>到这里，LauncherModel就查询到了需要处理的数据，为了提高效率LauncherModel队这些数据提供了临时保存的缓存区 如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> // Create the ApplicationInfos</div><div class="line">                for (int i = 0; i &lt; apps.size(); i++) &#123;</div><div class="line">                    LauncherActivityInfoCompat app = apps.get(i);</div><div class="line">                    // This builds the icon bitmaps.</div><div class="line">                    mBgAllAppsList.add(new AppInfo(mContext, app, user, mIconCache));</div><div class="line">                &#125;</div><div class="line">``` </div><div class="line"></div><div class="line"> - **按账户保存查询到的应用列表**</div><div class="line"></div><div class="line">通过ManagedProfileHeuristic工具将查询到的数据分类保存到共享文件中如下代码：</div></pre></td></tr></table></figure>
+<p>//创建与该用户相关联的筛选器实例<br>                final ManagedProfileHeuristic heuristic = ManagedProfileHeuristic.get(mContext, user);<br>                if (heuristic != null) {<br>                    //创建按账户分类应用程序的任务<br>                    final Runnable r = new Runnable() {</p>
+<pre><code>    @Override
+    public void run() {
+        heuristic.processUserApps(apps);
+    }
+};
+//在UI线程中执行这个任务
+runOnMainThread(new Runnable() {
+
+    @Override
+    public void run() {
+        // Check isLoadingWorkspace on the UI thread, as it is updated on
+        // the UI thread.
+        if (mIsLoadingAndBindingWorkspace) {
+            synchronized (mBindCompleteRunnables) {
+                mBindCompleteRunnables.add(r);
+            }
+        } else {
+            runOnWorkerThread(r);
+        }
+    }
+});
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> - **绑定应用程序菜单数据**</div><div class="line"></div><div class="line">将需要加载到应用程序菜单中的数据完成分类后，紧接着就需要将数据发送到Launcher中处理 如下：</div></pre></td></tr></table></figure>
+<p>mHandler.post(new Runnable() {<br>                public void run() {</p>
+<pre><code>        final long bindTime = SystemClock.uptimeMillis();
+        final Callbacks callbacks = tryGetCallbacks(oldCallbacks);
+        if (callbacks != null) {
+            callbacks.bindAllApplications(added);
+            if (DEBUG_LOADERS) {
+                Log.d(TAG, &quot;bound &quot; + added.size() + &quot; apps in &quot;
+                        + (SystemClock.uptimeMillis() - bindTime) + &quot;ms&quot;);
+            }
+        } else {
+            Log.i(TAG, &quot;not binding apps: no Launcher activity&quot;);
+        }
+    }
+});
+</code></pre><p>```</p>
+<p>剩下的onlyBindAllApps()方法做的事情 和上面的绑定应用程序菜单数据是一样的。</p>
+<p>OK 至此我们已经把加载绑定桌面和应用程序的流程都走完了。好累</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/01/android M Launcher之LauncherModel （二）/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/03/01/android M Launcher之LauncherModel （三）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/03/01/android M Launcher之LauncherModel （一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
+  
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Solary
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true,
+		showTags: false
+	}
+</script>
+
+<script>!function(t){function n(r){if(e[r])return e[r].exports;var o=e[r]={exports:{},id:r,loaded:!1};return t[r].call(o.exports,o,o.exports,n),o.loaded=!0,o.exports}var e={};return n.m=t,n.c=e,n.p="./",n(0)}([function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}function o(t,n){var e=/\/|index.html/g;return t.replace(e,"")===n.replace(e,"")}function i(){for(var t=document.querySelectorAll(".js-header-menu li a"),n=window.location.pathname,e=0,r=t.length;e<r;e++){var i=t[e];o(n,i.getAttribute("href"))&&(0,d.default)(i,"active")}}function u(t){for(var n=t.offsetLeft,e=t.offsetParent;null!==e;)n+=e.offsetLeft,e=e.offsetParent;return n}function f(t){for(var n=t.offsetTop,e=t.offsetParent;null!==e;)n+=e.offsetTop,e=e.offsetParent;return n}function c(t,n,e,r,o){var i=u(t),c=f(t)-n;if(c-e<=o){var a=t.$newDom;a||(a=t.cloneNode(!0),(0,h.default)(t,a),t.$newDom=a,a.style.position="fixed",a.style.top=(e||c)+"px",a.style.left=i+"px",a.style.zIndex=r||2,a.style.width="100%",a.style.color="#fff"),a.style.visibility="visible",t.style.visibility="hidden"}else{t.style.visibility="visible";var s=t.$newDom;s&&(s.style.visibility="hidden")}}function a(){var t=document.querySelector(".js-overlay"),n=document.querySelector(".js-header-menu");c(t,document.body.scrollTop,-63,2,0),c(n,document.body.scrollTop,1,3,0)}function s(){document.querySelector("#container").addEventListener("scroll",function(t){a()}),window.addEventListener("scroll",function(t){a()}),a()}function l(){x.default.versions.mobile&&window.screen.width<800&&(i(),s())}var p=e(71),d=r(p),v=e(72),y=(r(v),e(84)),h=r(y),b=e(69),x=r(b),m=e(75),g=r(m),w=e(70);l(),(0,w.addLoadEvent)(function(){g.default.init()}),t.exports={}},function(t,n){var e=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=e)},function(t,n){var e={}.hasOwnProperty;t.exports=function(t,n){return e.call(t,n)}},function(t,n,e){var r=e(49),o=e(15);t.exports=function(t){return r(o(t))}},function(t,n,e){t.exports=!e(8)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,e){var r=e(6),o=e(12);t.exports=e(4)?function(t,n,e){return r.f(t,n,o(1,e))}:function(t,n,e){return t[n]=e,t}},function(t,n,e){var r=e(10),o=e(30),i=e(24),u=Object.defineProperty;n.f=e(4)?Object.defineProperty:function(t,n,e){if(r(t),n=i(n,!0),r(e),o)try{return u(t,n,e)}catch(t){}if("get"in e||"set"in e)throw TypeError("Accessors not supported!");return"value"in e&&(t[n]=e.value),t}},function(t,n,e){var r=e(22)("wks"),o=e(13),i=e(1).Symbol,u="function"==typeof i,f=t.exports=function(t){return r[t]||(r[t]=u&&i[t]||(u?i:o)("Symbol."+t))};f.store=r},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n,e){var r=e(35),o=e(16);t.exports=Object.keys||function(t){return r(t,o)}},function(t,n,e){var r=e(11);t.exports=function(t){if(!r(t))throw TypeError(t+" is not an object!");return t}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n){var e=0,r=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++e+r).toString(36))}},function(t,n){var e=t.exports={version:"2.4.0"};"number"==typeof __e&&(__e=e)},function(t,n){t.exports=function(t){if(void 0==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n){t.exports={}},function(t,n){t.exports=!0},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,e){var r=e(6).f,o=e(2),i=e(7)("toStringTag");t.exports=function(t,n,e){t&&!o(t=e?t:t.prototype,i)&&r(t,i,{configurable:!0,value:n})}},function(t,n,e){var r=e(22)("keys"),o=e(13);t.exports=function(t){return r[t]||(r[t]=o(t))}},function(t,n,e){var r=e(1),o="__core-js_shared__",i=r[o]||(r[o]={});t.exports=function(t){return i[t]||(i[t]={})}},function(t,n){var e=Math.ceil,r=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(t>0?r:e)(t)}},function(t,n,e){var r=e(11);t.exports=function(t,n){if(!r(t))return t;var e,o;if(n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;if("function"==typeof(e=t.valueOf)&&!r(o=e.call(t)))return o;if(!n&&"function"==typeof(e=t.toString)&&!r(o=e.call(t)))return o;throw TypeError("Can't convert object to primitive value")}},function(t,n,e){var r=e(1),o=e(14),i=e(18),u=e(26),f=e(6).f;t.exports=function(t){var n=o.Symbol||(o.Symbol=i?{}:r.Symbol||{});"_"==t.charAt(0)||t in n||f(n,t,{value:u.f(t)})}},function(t,n,e){n.f=e(7)},function(t,n,e){var r=e(1),o=e(14),i=e(46),u=e(5),f="prototype",c=function(t,n,e){var a,s,l,p=t&c.F,d=t&c.G,v=t&c.S,y=t&c.P,h=t&c.B,b=t&c.W,x=d?o:o[n]||(o[n]={}),m=x[f],g=d?r:v?r[n]:(r[n]||{})[f];d&&(e=n);for(a in e)s=!p&&g&&void 0!==g[a],s&&a in x||(l=s?g[a]:e[a],x[a]=d&&"function"!=typeof g[a]?e[a]:h&&s?i(l,r):b&&g[a]==l?function(t){var n=function(n,e,r){if(this instanceof t){switch(arguments.length){case 0:return new t;case 1:return new t(n);case 2:return new t(n,e)}return new t(n,e,r)}return t.apply(this,arguments)};return n[f]=t[f],n}(l):y&&"function"==typeof l?i(Function.call,l):l,y&&((x.virtual||(x.virtual={}))[a]=l,t&c.R&&m&&!m[a]&&u(m,a,l)))};c.F=1,c.G=2,c.S=4,c.P=8,c.B=16,c.W=32,c.U=64,c.R=128,t.exports=c},function(t,n){var e={}.toString;t.exports=function(t){return e.call(t).slice(8,-1)}},function(t,n,e){var r=e(11),o=e(1).document,i=r(o)&&r(o.createElement);t.exports=function(t){return i?o.createElement(t):{}}},function(t,n,e){t.exports=!e(4)&&!e(8)(function(){return 7!=Object.defineProperty(e(29)("div"),"a",{get:function(){return 7}}).a})},function(t,n,e){"use strict";var r=e(18),o=e(27),i=e(36),u=e(5),f=e(2),c=e(17),a=e(51),s=e(20),l=e(58),p=e(7)("iterator"),d=!([].keys&&"next"in[].keys()),v="@@iterator",y="keys",h="values",b=function(){return this};t.exports=function(t,n,e,x,m,g,w){a(e,n,x);var O,S,_,j=function(t){if(!d&&t in A)return A[t];switch(t){case y:return function(){return new e(this,t)};case h:return function(){return new e(this,t)}}return function(){return new e(this,t)}},P=n+" Iterator",E=m==h,M=!1,A=t.prototype,T=A[p]||A[v]||m&&A[m],L=T||j(m),N=m?E?j("entries"):L:void 0,C="Array"==n?A.entries||T:T;if(C&&(_=l(C.call(new t)),_!==Object.prototype&&(s(_,P,!0),r||f(_,p)||u(_,p,b))),E&&T&&T.name!==h&&(M=!0,L=function(){return T.call(this)}),r&&!w||!d&&!M&&A[p]||u(A,p,L),c[n]=L,c[P]=b,m)if(O={values:E?L:j(h),keys:g?L:j(y),entries:N},w)for(S in O)S in A||i(A,S,O[S]);else o(o.P+o.F*(d||M),n,O);return O}},function(t,n,e){var r=e(10),o=e(55),i=e(16),u=e(21)("IE_PROTO"),f=function(){},c="prototype",a=function(){var t,n=e(29)("iframe"),r=i.length,o="<",u=">";for(n.style.display="none",e(48).appendChild(n),n.src="javascript:",t=n.contentWindow.document,t.open(),t.write(o+"script"+u+"document.F=Object"+o+"/script"+u),t.close(),a=t.F;r--;)delete a[c][i[r]];return a()};t.exports=Object.create||function(t,n){var e;return null!==t?(f[c]=r(t),e=new f,f[c]=null,e[u]=t):e=a(),void 0===n?e:o(e,n)}},function(t,n,e){var r=e(35),o=e(16).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return r(t,o)}},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,e){var r=e(2),o=e(3),i=e(45)(!1),u=e(21)("IE_PROTO");t.exports=function(t,n){var e,f=o(t),c=0,a=[];for(e in f)e!=u&&r(f,e)&&a.push(e);for(;n.length>c;)r(f,e=n[c++])&&(~i(a,e)||a.push(e));return a}},function(t,n,e){t.exports=e(5)},function(t,n,e){var r=e(15);t.exports=function(t){return Object(r(t))}},function(t,n,e){t.exports={default:e(41),__esModule:!0}},function(t,n,e){t.exports={default:e(42),__esModule:!0}},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}n.__esModule=!0;var o=e(39),i=r(o),u=e(38),f=r(u),c="function"==typeof f.default&&"symbol"==typeof i.default?function(t){return typeof t}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":typeof t};n.default="function"==typeof f.default&&"symbol"===c(i.default)?function(t){return"undefined"==typeof t?"undefined":c(t)}:function(t){return t&&"function"==typeof f.default&&t.constructor===f.default&&t!==f.default.prototype?"symbol":"undefined"==typeof t?"undefined":c(t)}},function(t,n,e){e(65),e(63),e(66),e(67),t.exports=e(14).Symbol},function(t,n,e){e(64),e(68),t.exports=e(26).f("iterator")},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){t.exports=function(){}},function(t,n,e){var r=e(3),o=e(61),i=e(60);t.exports=function(t){return function(n,e,u){var f,c=r(n),a=o(c.length),s=i(u,a);if(t&&e!=e){for(;a>s;)if(f=c[s++],f!=f)return!0}else for(;a>s;s++)if((t||s in c)&&c[s]===e)return t||s||0;return!t&&-1}}},function(t,n,e){var r=e(43);t.exports=function(t,n,e){if(r(t),void 0===n)return t;switch(e){case 1:return function(e){return t.call(n,e)};case 2:return function(e,r){return t.call(n,e,r)};case 3:return function(e,r,o){return t.call(n,e,r,o)}}return function(){return t.apply(n,arguments)}}},function(t,n,e){var r=e(9),o=e(34),i=e(19);t.exports=function(t){var n=r(t),e=o.f;if(e)for(var u,f=e(t),c=i.f,a=0;f.length>a;)c.call(t,u=f[a++])&&n.push(u);return n}},function(t,n,e){t.exports=e(1).document&&document.documentElement},function(t,n,e){var r=e(28);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==r(t)?t.split(""):Object(t)}},function(t,n,e){var r=e(28);t.exports=Array.isArray||function(t){return"Array"==r(t)}},function(t,n,e){"use strict";var r=e(32),o=e(12),i=e(20),u={};e(5)(u,e(7)("iterator"),function(){return this}),t.exports=function(t,n,e){t.prototype=r(u,{next:o(1,e)}),i(t,n+" Iterator")}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n,e){var r=e(9),o=e(3);t.exports=function(t,n){for(var e,i=o(t),u=r(i),f=u.length,c=0;f>c;)if(i[e=u[c++]]===n)return e}},function(t,n,e){var r=e(13)("meta"),o=e(11),i=e(2),u=e(6).f,f=0,c=Object.isExtensible||function(){return!0},a=!e(8)(function(){return c(Object.preventExtensions({}))}),s=function(t){u(t,r,{value:{i:"O"+ ++f,w:{}}})},l=function(t,n){if(!o(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!i(t,r)){if(!c(t))return"F";if(!n)return"E";s(t)}return t[r].i},p=function(t,n){if(!i(t,r)){if(!c(t))return!0;if(!n)return!1;s(t)}return t[r].w},d=function(t){return a&&v.NEED&&c(t)&&!i(t,r)&&s(t),t},v=t.exports={KEY:r,NEED:!1,fastKey:l,getWeak:p,onFreeze:d}},function(t,n,e){var r=e(6),o=e(10),i=e(9);t.exports=e(4)?Object.defineProperties:function(t,n){o(t);for(var e,u=i(n),f=u.length,c=0;f>c;)r.f(t,e=u[c++],n[e]);return t}},function(t,n,e){var r=e(19),o=e(12),i=e(3),u=e(24),f=e(2),c=e(30),a=Object.getOwnPropertyDescriptor;n.f=e(4)?a:function(t,n){if(t=i(t),n=u(n,!0),c)try{return a(t,n)}catch(t){}if(f(t,n))return o(!r.f.call(t,n),t[n])}},function(t,n,e){var r=e(3),o=e(33).f,i={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],f=function(t){try{return o(t)}catch(t){return u.slice()}};t.exports.f=function(t){return u&&"[object Window]"==i.call(t)?f(t):o(r(t))}},function(t,n,e){var r=e(2),o=e(37),i=e(21)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=o(t),r(t,i)?t[i]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n,e){var r=e(23),o=e(15);t.exports=function(t){return function(n,e){var i,u,f=String(o(n)),c=r(e),a=f.length;return c<0||c>=a?t?"":void 0:(i=f.charCodeAt(c),i<55296||i>56319||c+1===a||(u=f.charCodeAt(c+1))<56320||u>57343?t?f.charAt(c):i:t?f.slice(c,c+2):(i-55296<<10)+(u-56320)+65536)}}},function(t,n,e){var r=e(23),o=Math.max,i=Math.min;t.exports=function(t,n){return t=r(t),t<0?o(t+n,0):i(t,n)}},function(t,n,e){var r=e(23),o=Math.min;t.exports=function(t){return t>0?o(r(t),9007199254740991):0}},function(t,n,e){"use strict";var r=e(44),o=e(52),i=e(17),u=e(3);t.exports=e(31)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,e=this._i++;return!t||e>=t.length?(this._t=void 0,o(1)):"keys"==n?o(0,e):"values"==n?o(0,t[e]):o(0,[e,t[e]])},"values"),i.Arguments=i.Array,r("keys"),r("values"),r("entries")},function(t,n){},function(t,n,e){"use strict";var r=e(59)(!0);e(31)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,e=this._i;return e>=n.length?{value:void 0,done:!0}:(t=r(n,e),this._i+=t.length,{value:t,done:!1})})},function(t,n,e){"use strict";var r=e(1),o=e(2),i=e(4),u=e(27),f=e(36),c=e(54).KEY,a=e(8),s=e(22),l=e(20),p=e(13),d=e(7),v=e(26),y=e(25),h=e(53),b=e(47),x=e(50),m=e(10),g=e(3),w=e(24),O=e(12),S=e(32),_=e(57),j=e(56),P=e(6),E=e(9),M=j.f,A=P.f,T=_.f,L=r.Symbol,N=r.JSON,C=N&&N.stringify,k="prototype",F=d("_hidden"),q=d("toPrimitive"),I={}.propertyIsEnumerable,B=s("symbol-registry"),D=s("symbols"),W=s("op-symbols"),H=Object[k],K="function"==typeof L,R=r.QObject,J=!R||!R[k]||!R[k].findChild,U=i&&a(function(){return 7!=S(A({},"a",{get:function(){return A(this,"a",{value:7}).a}})).a})?function(t,n,e){var r=M(H,n);r&&delete H[n],A(t,n,e),r&&t!==H&&A(H,n,r)}:A,G=function(t){var n=D[t]=S(L[k]);return n._k=t,n},$=K&&"symbol"==typeof L.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof L},z=function(t,n,e){return t===H&&z(W,n,e),m(t),n=w(n,!0),m(e),o(D,n)?(e.enumerable?(o(t,F)&&t[F][n]&&(t[F][n]=!1),e=S(e,{enumerable:O(0,!1)})):(o(t,F)||A(t,F,O(1,{})),t[F][n]=!0),U(t,n,e)):A(t,n,e)},Y=function(t,n){m(t);for(var e,r=b(n=g(n)),o=0,i=r.length;i>o;)z(t,e=r[o++],n[e]);return t},Q=function(t,n){return void 0===n?S(t):Y(S(t),n)},X=function(t){var n=I.call(this,t=w(t,!0));return!(this===H&&o(D,t)&&!o(W,t))&&(!(n||!o(this,t)||!o(D,t)||o(this,F)&&this[F][t])||n)},V=function(t,n){if(t=g(t),n=w(n,!0),t!==H||!o(D,n)||o(W,n)){var e=M(t,n);return!e||!o(D,n)||o(t,F)&&t[F][n]||(e.enumerable=!0),e}},Z=function(t){for(var n,e=T(g(t)),r=[],i=0;e.length>i;)o(D,n=e[i++])||n==F||n==c||r.push(n);return r},tt=function(t){for(var n,e=t===H,r=T(e?W:g(t)),i=[],u=0;r.length>u;)!o(D,n=r[u++])||e&&!o(H,n)||i.push(D[n]);return i};K||(L=function(){if(this instanceof L)throw TypeError("Symbol is not a constructor!");var t=p(arguments.length>0?arguments[0]:void 0),n=function(e){this===H&&n.call(W,e),o(this,F)&&o(this[F],t)&&(this[F][t]=!1),U(this,t,O(1,e))};return i&&J&&U(H,t,{configurable:!0,set:n}),G(t)},f(L[k],"toString",function(){return this._k}),j.f=V,P.f=z,e(33).f=_.f=Z,e(19).f=X,e(34).f=tt,i&&!e(18)&&f(H,"propertyIsEnumerable",X,!0),v.f=function(t){return G(d(t))}),u(u.G+u.W+u.F*!K,{Symbol:L});for(var nt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;nt.length>et;)d(nt[et++]);for(var nt=E(d.store),et=0;nt.length>et;)y(nt[et++]);u(u.S+u.F*!K,"Symbol",{for:function(t){return o(B,t+="")?B[t]:B[t]=L(t)},keyFor:function(t){if($(t))return h(B,t);throw TypeError(t+" is not a symbol!")},useSetter:function(){J=!0},useSimple:function(){J=!1}}),u(u.S+u.F*!K,"Object",{create:Q,defineProperty:z,defineProperties:Y,getOwnPropertyDescriptor:V,getOwnPropertyNames:Z,getOwnPropertySymbols:tt}),N&&u(u.S+u.F*(!K||a(function(){var t=L();return"[null]"!=C([t])||"{}"!=C({a:t})||"{}"!=C(Object(t))})),"JSON",{stringify:function(t){if(void 0!==t&&!$(t)){for(var n,e,r=[t],o=1;arguments.length>o;)r.push(arguments[o++]);return n=r[1],"function"==typeof n&&(e=n),!e&&x(n)||(n=function(t,n){if(e&&(n=e.call(this,t,n)),!$(n))return n}),r[1]=n,C.apply(N,r)}}}),L[k][q]||e(5)(L[k],q,L[k].valueOf),l(L,"Symbol"),l(Math,"Math",!0),l(r.JSON,"JSON",!0)},function(t,n,e){e(25)("asyncIterator")},function(t,n,e){e(25)("observable")},function(t,n,e){e(62);for(var r=e(1),o=e(5),i=e(17),u=e(7)("toStringTag"),f=["NodeList","DOMTokenList","MediaList","StyleSheetList","CSSRuleList"],c=0;c<5;c++){var a=f[c],s=r[a],l=s&&s.prototype;l&&!l[u]&&o(l,u,a),i[a]=i.Array}},function(t,n){"use strict";var e={versions:function(){var t=window.navigator.userAgent;return{trident:t.indexOf("Trident")>-1,presto:t.indexOf("Presto")>-1,webKit:t.indexOf("AppleWebKit")>-1,gecko:t.indexOf("Gecko")>-1&&t.indexOf("KHTML")==-1,mobile:!!t.match(/AppleWebKit.*Mobile.*/),ios:!!t.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),android:t.indexOf("Android")>-1||t.indexOf("Linux")>-1,iPhone:t.indexOf("iPhone")>-1||t.indexOf("Mac")>-1,iPad:t.indexOf("iPad")>-1,webApp:t.indexOf("Safari")==-1,weixin:t.indexOf("MicroMessenger")==-1}}()};t.exports=e},function(t,n,e){"use strict";function r(t){return t&&t.__esModule?t:{default:t}}var o=e(40),i=r(o),u=function(){function t(t,n,e){return n||e?String.fromCharCode(n||e):o[t]||t}function n(t){return l[t]}var e=/&quot;|&lt;|&gt;|&amp;|&nbsp;|&apos;|&#(\d+);|&#(\d+)/g,r=/['<> "&]/g,o={"&quot;":'"',"&lt;":"<","&gt;":">","&amp;":"&","&nbsp;":" "},f=/\u00a0/g,c=/<br\s*\/?>/gi,a=/\r?\n/g,s=/\s/g,l={};for(var p in o)l[o[p]]=p;return o["&apos;"]="'",l["'"]="&#39;",{encode:function(t){return t?(""+t).replace(r,n).replace(a,"<br/>").replace(s,"&nbsp;"):""},decode:function(n){return n?(""+n).replace(c,"\n").replace(e,t).replace(f," "):""},encodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},encodeBase16forJSON:function(t){if(!t)return t;t=t.replace(/[\u4E00-\u9FBF]/gi,function(t){return escape(t).replace("%u","\\u")});for(var n=[],e=0,r=t.length;r>e;e++)n.push(t.charCodeAt(e).toString(16).toUpperCase());return n.join("")},decodeBase16:function(t){if(!t)return t;t+="";for(var n=[],e=0,r=t.length;r>e;e+=2)n.push(String.fromCharCode("0x"+t.slice(e,e+2)));return n.join("")},encodeObject:function(t){if(t instanceof Array)for(var n=0,e=t.length;e>n;n++)t[n]=u.encodeObject(t[n]);else if("object"==("undefined"==typeof t?"undefined":(0,i.default)(t)))for(var r in t)t[r]=u.encodeObject(t[r]);else if("string"==typeof t)return u.encode(t);return t},loadScript:function(t){var n=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(n),n.setAttribute("src",t)},addLoadEvent:function(t){var n=window.onload;"function"!=typeof window.onload?window.onload=t:window.onload=function(){n(),t()}}}}();t.exports=u},function(t,n){function e(t,n){t.classList?t.classList.add(n):t.className+=" "+n}t.exports=e},function(t,n){function e(t,n){if(t.classList)t.classList.remove(n);else{var e=new RegExp("(^|\\b)"+n.split(" ").join("|")+"(\\b|$)","gi");t.className=t.className.replace(e," ")}}t.exports=e},,,function(t,n){"use strict";function e(){var t=document.querySelector("#page-nav");if(t&&!document.querySelector("#page-nav .extend.prev")&&(t.innerHTML='<a class="extend prev disabled" rel="prev">&laquo; Prev</a>'+t.innerHTML),t&&!document.querySelector("#page-nav .extend.next")&&(t.innerHTML=t.innerHTML+'<a class="extend next disabled" rel="next">Next &raquo;</a>'),yiliaConfig&&yiliaConfig.open_in_new){var n=document.querySelectorAll(".article-entry a:not(.article-more-a)");n.forEach(function(t){t.setAttribute("target","_blank")})}var e=document.querySelector("#js-aboutme");e&&0!==e.length&&(e.innerHTML=e.innerText)}t.exports={init:e}},,,,,,,,,function(t,n){function e(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var e=t.nextSibling;return e?t.parentNode.insertBefore(n,e):t.parentNode.appendChild(n)}t.exports=e}])</script><script src="/./main.2d7529.js"></script><script>!function(){var e=function(e){var t=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)};e("/slider.885efe.js")}()</script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-nav header-menu">
+    
+    
+      
+      
+      
+    
+      
+      
+      
+    
+    
+
+    <ul style="width: 70%">
+    
+    
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      
+        
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      
+        
+    </ul>
+  </div>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、在博客根目录（注意不是yilia根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            2、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: true
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">一个后知后觉的程序员&lt;br /&gt;&lt;br /&gt;一个努力上进的程序员&lt;br /&gt;&lt;br /&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>

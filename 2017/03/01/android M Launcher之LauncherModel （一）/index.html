@@ -8,23 +8,24 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Solary的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="上周五的时候领导分了一个任务，客户让在google开机向导里面增加一页，首先就想到了android的Overlay，然后网上搜了下，发下有很多人写了这方面的技术。而且写的都还不错，所以本篇只当记录作用吧，列下写的比较好的博客：
-http://developer.sonymobile.com/2014/04/22/sony-contributes-runtime-resource-overlay">
+  <meta name="description" content="众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。
+一、LauncherModel的创建
+要了解LauncherModel，我们要从Launch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Solary的博客">
-<meta property="og:url" content="http://yoursite.com/2017/03/01/Android RRO机制的运用-----google开机向导客制化/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/03/01/android M Launcher之LauncherModel （一）/index.html">
 <meta property="og:site_name" content="Solary的博客">
-<meta property="og:description" content="上周五的时候领导分了一个任务，客户让在google开机向导里面增加一页，首先就想到了android的Overlay，然后网上搜了下，发下有很多人写了这方面的技术。而且写的都还不错，所以本篇只当记录作用吧，列下写的比较好的博客：
-http://developer.sonymobile.com/2014/04/22/sony-contributes-runtime-resource-overlay">
-<meta property="og:image" content="http://img.blog.csdn.net/20170109161105892?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170109161043595?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170109165055925?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-03-01T02:24:01.128Z">
+<meta property="og:description" content="众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。
+一、LauncherModel的创建
+要了解LauncherModel，我们要从Launch">
+<meta property="og:image" content="http://img.blog.csdn.net/20161124004917751">
+<meta property="og:updated_time" content="2017-03-01T02:27:23.027Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Solary的博客">
-<meta name="twitter:description" content="上周五的时候领导分了一个任务，客户让在google开机向导里面增加一页，首先就想到了android的Overlay，然后网上搜了下，发下有很多人写了这方面的技术。而且写的都还不错，所以本篇只当记录作用吧，列下写的比较好的博客：
-http://developer.sonymobile.com/2014/04/22/sony-contributes-runtime-resource-overlay">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170109161105892?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta name="twitter:description" content="众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。
+一、LauncherModel的创建
+要了解LauncherModel，我们要从Launch">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161124004917751">
   
     <link rel="alternative" href="/atom.xml" title="Solary的博客" type="application/atom+xml">
   
@@ -156,38 +157,123 @@ http://developer.sonymobile.com/2014/04/22/sony-contributes-runtime-resource-ove
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Android RRO机制的运用-----google开机向导客制化" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-android M Launcher之LauncherModel （一）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>  上周五的时候领导分了一个任务，客户让在google开机向导里面增加一页，首先就想到了android的Overlay，然后网上搜了下，发下有很多人写了这方面的技术。而且写的都还不错，所以本篇只当记录作用吧，列下写的比较好的博客：</p>
-<p><a href="http://developer.sonymobile.com/2014/04/22/sony-contributes-runtime-resource-overlay-framework-to-android-code-example/" target="_blank" rel="external">http://developer.sonymobile.com/2014/04/22/sony-contributes-runtime-resource-overlay-framework-to-android-code-example/</a></p>
-<p>看情况大家应该都参考的这篇，英文好的可以看下。</p>
-<p><a href="http://blog.csdn.net/azhengye/article/details/49050631" target="_blank" rel="external">Android 运行时资源替换—-Runtime Resource Overlay</a> </p>
-<p>既然原理别人都已经写好了，再写就有点浪费时间了，不懂的话可以参考上面两篇博客。</p>
-<p>下面直接开始我这个功能的实现。</p>
-<p>首先看下我们的基本思路，（解释一点 其实google的开机向导很多页面都来自不同的app）</p>
-<p> 1、所以我们先要找到把每一页整合到一起的配置文件，<br> 2、找到这个配置文件后在相应的地方增加我们的页面配置。</p>
-<p> 后面的事就是编写UI之类的 根据需求来就可以了</p>
-<p>1、查找配置文件</p>
-<p>通过反编译工具可以把SetupWizard的资源文件反编译出来，android的配置文件一般都是xml文件 。所以到现在我们应该已经得到了SetupWizard的配置文件，这个配置文件具体是什么。请往下看。</p>
-<p>通过sdk提供的hierarchyviewer工具我们可以得到SetupWizard每个页面的包名</p>
-<p><img src="http://img.blog.csdn.net/20170109161105892?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>注意到BluOOBEKeepActivity 和BluOOBEActiviy就是我添加的，先忽略掉它们，设置wifi的时候老是跳过 ，下面这张图是走到设置wifi界面的时候截的。</p>
-<p><img src="http://img.blog.csdn.net/20170109161043595?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>通过上图我们可以知道SetupWizard会走到Setting中去选择连接wifi的界面，别的包名看起来都是google的，google的应用我们一般都没源码，所以就以Settings的这个界面入手，<br>看Settings中AndroidManifest.xml关于WifiSetupActivity的配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;activity android:name=&quot;.wifi.WifiSetupActivity&quot;</div><div class="line">                android:taskAffinity=&quot;com.android.wizard&quot;</div><div class="line">                android:theme=&quot;@style/SetupWizardDisableAppStartingTheme&quot;</div><div class="line">                android:label=&quot;@string/wifi_setup_wizard_title&quot;</div><div class="line">                android:icon=&quot;@drawable/empty_icon&quot;</div><div class="line">                android:clearTaskOnLaunch=&quot;true&quot;</div><div class="line">                android:windowSoftInputMode=&quot;adjustNothing&quot;&gt;</div><div class="line">            &lt;intent-filter android:priority=&quot;1&quot;&gt;</div><div class="line">                &lt;action android:name=&quot;com.android.net.wifi.SETUP_WIFI_NETWORK&quot; /&gt;</div><div class="line">                &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line">            &lt;meta-data android:name=&quot;com.android.settings.PRIMARY_PROFILE_CONTROLLED&quot;</div><div class="line">                android:value=&quot;true&quot; /&gt;</div><div class="line">        &lt;/activity&gt;</div></pre></td></tr></table></figure>
-<p>搜索这些信息发现SetupWizard的资源中并没有找到，很郁闷 ，没办法 唯一的思路不能断呀，只能一路查找它的父类 最后终于在WifiSettingsActivity 中找到了有用的信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;action android:name=&quot;android.settings.WIFI_SETTINGS&quot; /&gt;</div></pre></td></tr></table></figure>
-<p><img src="http://img.blog.csdn.net/20170109165055925?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>打开这两个文件查看，基本类似的，只是一个多了user，不知道具体有什么差别，但是通过对比发现 它们基本一样 只是wizard_script比wizard_script_user多了好多页面，但是明显第一个有welcome的页面，第二个没有，所以最终决定在wizard_script添加我们的页面。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;WizardAction wizard:uri=&quot;intent:#Intent;action=android.settings.SET_BLUOOBEKEEP;end&quot; id=&quot;blu_oobekeep&quot;&gt;</div><div class="line">        &lt;result wizard:action=&quot;restore_check&quot; /&gt;</div><div class="line">    &lt;/WizardAction&gt;</div></pre></td></tr></table></figure>
-<p>好了 经过比较蛋疼的查找后终于知道了要把新页面添加到什么地方， 接下来就是添加页面了。</p>
-<p>2、最后也决定把这个页面写到Setting中，具体的内容的话就要看各个需求了。</p>
-<p> Settings中AndroidManifest添加配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;activity android:name=&quot;com.android.settings.wifi.BluOOBEKeepActivity&quot;</div><div class="line">                android:theme=&quot;@style/SetupWizardTheme.Light&quot;</div><div class="line">                android:taskAffinity=&quot;com.android.wizard&quot;&gt;</div><div class="line">          &lt;intent-filter&gt;</div><div class="line">              &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;</div><div class="line">              &lt;action android:name=&quot;android.settings.SET_BLUOOBEKEEP&quot; /&gt;</div><div class="line">              &lt;action android:name=&quot;android.settings.SET_BLUOOBE_NOT_ACCOUNTKEEP&quot; /&gt;</div><div class="line">              &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;</div><div class="line">          &lt;/intent-filter&gt;</div><div class="line">      &lt;/activity&gt;</div></pre></td></tr></table></figure>
-<p><a href="https://github.com/solary2014/SetupWizardOverlay" target="_blank" rel="external">源码</a></p>
+        <p>众所周知  LauncherModel在Launcher中所占的位置，它相当于Launcher的数据中心，Launcher的桌面以及应用程序菜单中所需的数据像 桌面小部件的信息、快捷方式信息、文件信息、以及一些比较特殊的桌面页的信息等都是由它提供，因此我们这里来分析下LauncherModel的工作流程。</p>
+<pre><code>一、LauncherModel的创建
+</code></pre><p>要了解LauncherModel，我们要从LauncherModel的实例化开始。<br>LauncherModel是在Launcher应用程序被创建的时候，由LauncherApplication通过调用LauncherAppState的初始化方法实现的，即由LauncherAppState的getInstance方法调用LauncherAppState<br>的构造方法来实现，因此我们需要去看下LauncherAppState的构造方法</p>
+<p>1、创建LauncherModel的准备工作<br>    LauncherModel作为中心枢纽，不可避免的要与大量的图片打交道。这些图片包括Launcher所管理的医用程序图标，以及一些桌面小部件的预览图标，Launcher为他们准备了一个图片缓存区（IconCache），因此LauncherModel首先需要持有IconCache的实例，另外，如果Launcher并不希望那么多的应用程序展示在其中，所以它还需要一个应用程序的筛选器实例（AppFilter）。于是，LauncherModel的准备工作实际上就是IconCache和AppFilter的创建过程。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"> mIconCache = new IconCache(sContext, mInvariantDeviceProfile);</div><div class="line"> </div><div class="line">...</div><div class="line"></div><div class="line">        mAppFilter = AppFilter.loadByName(sContext.getString(R.string.app_filter_class));</div><div class="line">...</div></pre></td></tr></table></figure></p>
+<p>中间的代码都省略一下只看和Launchermodel有关的。</p>
+<p>2、创建LauncherModel的实例<br>    在完成了以上准备工作后，就可以进行LauncherModel的实例创建了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mModel = new LauncherModel(this, mIconCache, mAppFilter);</div></pre></td></tr></table></figure>
+<p>3、LauncherModel的一些设置</p>
+<p>LauncherModel本身是一个广播接收器的子类，LauncherAppState在创建的时候会为它设置一些广播，以便让LauncherModel的实例能够处理自己的广播：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// Register intent receivers</div><div class="line">      IntentFilter filter = new IntentFilter();</div><div class="line">      filter.addAction(Intent.ACTION_LOCALE_CHANGED);</div><div class="line">      filter.addAction(SearchManager.INTENT_GLOBAL_SEARCH_ACTIVITY_CHANGED);</div><div class="line">      // For handling managed profiles</div><div class="line">      filter.addAction(LauncherAppsCompat.ACTION_MANAGED_PROFILE_ADDED);</div><div class="line">      filter.addAction(LauncherAppsCompat.ACTION_MANAGED_PROFILE_REMOVED);</div><div class="line"></div><div class="line">      sContext.registerReceiver(mModel, filter);</div></pre></td></tr></table></figure>
+<p>  从上面代码可以看出，LauncherModel本身需要关注设备的语种，设备配置变化以及搜索相关的变化，这是因为Launcher需要根据设备配置信息的改变来改变加载在桌面的图标、标题的信息，例如语言改变后 Launcher会马上生效。</p>
+<p>到这里 LauncherModel的创建过程就完成了，接下来看下LauncherModel的构造函数。</p>
+<pre><code>二 、LauncherModel的构造函数
+</code></pre><p><img src="http://img.blog.csdn.net/20161124004917751" alt="这里写图片描述"></p>
+<p>上图展示了LauncherModel的创建过程，可以看出LauncherModel的运行需要依赖一些条件。<br>如下</p>
+<p>1、有些应用程序会通过其配置把自己安装到外部存储器上，因此Launcher在管理应用程序的时候就需要额外关注这个存储器是否是一个可以被移除的设备</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mAppsCanBeOnRemoveableStorage = Environment.isExternalStorageRemovable();</div></pre></td></tr></table></figure>
+<p>isExternalStorageRemovable这个方法将返回这个外部存储器的性质。</p>
+<p>2、Launcher3是在Android4.4以后才提供的全新桌面应用程序，因此我们需要考虑从Launcher2的升级，其中一个重要的部分就是将Launcher2的数据库数据迁移并升级到Launcher3中，并适配Launcher3的数据库结构。在Launcher3中通过字符串的配置将Launcher2数据库的URL保持起来后，LauncherModel在创建的时候通过此字符串的配置获取访问Launcher2数据库的URL，如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String oldProvider = context.getString(R.string.old_launcher_provider_uri);</div></pre></td></tr></table></figure>
+<p>3、有了访问Launcher2数据库的URL，接下来要做的是判断Launcher2的数据库是否还存在。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">// This may be the same as MIGRATE_AUTHORITY, or it may be replaced by a different</div><div class="line">       // resource string.</div><div class="line">       //获取Launcher2数据库的Author信息</div><div class="line">       String redirectAuthority = Uri.parse(oldProvider).getAuthority();</div><div class="line">       //通过特定的Author获取特定的数据库组件信息</div><div class="line">       ProviderInfo providerInfo =</div><div class="line">               context.getPackageManager().resolveContentProvider(MIGRATE_AUTHORITY, 0);</div><div class="line">       ProviderInfo redirectProvider =</div><div class="line">               context.getPackageManager().resolveContentProvider(redirectAuthority, 0);</div><div class="line"></div><div class="line">       Log.d(TAG, &quot;Old launcher provider: &quot; + oldProvider);</div><div class="line">       //判断Launcher2的数据库组件是否存在</div><div class="line">       mOldContentProviderExists = (providerInfo != null) &amp;&amp; (redirectProvider != null);</div></pre></td></tr></table></figure>
+<p>这里主要的目的是通过mOldContentProviderExists 保持当前是否存在Launcher2数据库组件，因为只有这些组件存在，才可以保证Launcher2数据库存在。</p>
+<p>4、最后LauncherModel还需要保持一些对于自身工作有着深远影响的信息，如图片缓存区、用户管理器等信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">//保存Launcher的运行状态</div><div class="line">       mApp = app;</div><div class="line">       //支持后台加载数据的列表</div><div class="line">       mBgAllAppsList = new AllAppsList(iconCache, appFilter)；</div><div class="line">       //图片缓存</div><div class="line">       mIconCache = iconCache;</div><div class="line"></div><div class="line">       //应用程序兼容管理器</div><div class="line">       mLauncherApps = LauncherAppsCompat.getInstance(context);</div><div class="line">       //保存当前用户管理器</div><div class="line">       mUserManager = UserManagerCompat.getInstance(context);</div></pre></td></tr></table></figure>
+<p>到这里LauncherModel就实例化完成了，当LauncherAppState实例化流程完成后，LauncherModel就可以投入运行，等待来自其他组件的调度。</p>
+<pre><code>三、与LauncherModel的沟通方式
+</code></pre><p>LauncherModel作为Launcher的中心枢纽，它给Launcher的各个组件提供了三类借口，以便更新Launcher的界面等信息，这些借口包括LauncherModel操作的回调借口，广播接口和应用程序内部接口。</p>
+<p>1、LauncherModel操作的回调接口</p>
+<p>LauncherModel操作的回调接口主要使用在一下场景中。</p>
+<ul>
+<li><p>Launcher在启动时，需要桌面的数据，这些数据的形成需要由LauncherModel完成，在数据不断被完善的过程中，LauncherModel需要通过这些接口输送已经完成的数据</p>
+</li>
+<li><p>在Launcher使用的过程中，我们可能会改变桌面上的元素配置，比如手动往桌面上添加快捷方式，每一次操作也无一例外的需要通过LauncherModel来完成。操作完成后LauncherModel也需要通过这些接口通知界面更新。</p>
+</li>
+<li><p>第三方应用程序通过Launcher提供的接口往桌面上添加或者从桌面上删除摸个快捷方式，这个操作由Launcher提供的广播接收器将请求转发到LauncherModel来处理，LauncherModel完成相关数据处理后，将会通过这些接口通知界面更新。</p>
+</li>
+</ul>
+<p>以上就是这些回调接口的作用以及使用场景，需要注意的是，这些接口并非由LauncherModel实现，而是由Launcher的组件实现并注册到LauncherModel中，从而实现这样的沟通机制。</p>
+<p>下面分析Launcher怎么注册到LauncherModel中</p>
+<p>①  注册回调接口</p>
+<p>在Launcher中，很多组件都需要与LauncherModel建立联系，而这些联系多数是通过Launcher的主Activity（Launcher.java）来实现的，因此Launcher需要实现LauncherModel的回调接口，LauncherModel在执行某个操作的时候，会将执行的过程和结果通过回调的方式告诉Launcher，下面看下Launcher是如何将接口注册到LauncherModel中。</p>
+<p>Launcher的入口Activity在创建的时候，通过LauncherAppState的setLauncher方法开始注册接口的过程，如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mModel = app.setLauncher(this);</div></pre></td></tr></table></figure>
+<p>LauncherAppState的setLauncher方法除了完成注册以外，还将LauncherModel实例的引用返回到Launcher。</p>
+<p>  在LauncherAppState的setLauncher方法中调用LauncherModel的initialize方法，将接口实现的引用注册到LauncherModel中，并返回已经完成初始化的LauncherModel的引用。比较绕口  看代码就明白</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">LauncherModel setLauncher(Launcher launcher) &#123;</div><div class="line">        getLauncherProvider().setLauncherProviderChangeListener(launcher);</div><div class="line">        mModel.initialize(launcher);</div><div class="line">        mAccessibilityDelegate = ((launcher != null) &amp;&amp; Utilities.ATLEAST_LOLLIPOP) ?</div><div class="line">            new LauncherAccessibilityDelegate(launcher) : null;</div><div class="line">        return mModel;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>在LauncherModel的initialize方法中，实际上只是使用Launcher的接口实现部分，并将接口实现的引用放在一个弱引用中，从而完成初始化过程<br>如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public void initialize(Callbacks callbacks) &#123;</div><div class="line">       synchronized (mLock) &#123;</div><div class="line">           // Disconnect any of the callbacks and drawables associated with ItemInfos on the</div><div class="line">           // workspace to prevent leaking Launcher activities on orientation change.</div><div class="line">           unbindItemInfosAndClearQueuedBindRunnables();</div><div class="line">           mCallbacks = new WeakReference&lt;Callbacks&gt;(callbacks);</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p> 这样Launcher和LauncherModel中的回调方法就建立起了联系，LauncherModel的所有操作结果都会通过callbacks中定义的各个回调接口中的方法通知给Launcher，并由Launcher分发给不同的桌面组件或者Launcher自身。</p>
+<p>② 回调接口的定义<br>上面了解了接口的注册过程，接下来我们看下接口的具体内容。<br>在LauncherModel中定义了一个名叫callbacks的接口，它体现了Launchermodel在操作的过程中可能产生的中间过程以及动作，方便LauncherModel获取实现方的运行状态以决定其操作的过程。每个以接口的含义请参考这篇博客</p>
+<p><a href="http://blog.csdn.net/asd1031/article/details/53316790" target="_blank" rel="external"> LauncherModel.Callbacks接口</a></p>
+<p>2、广播接口</p>
+<p>系统也可以通过发送广播来驱动LauncherModel工作，当LauncherModel接收到一些广播的时候，会启动界面刷新。LauncherModel本身就是一个广播接收器，根据Android的管理，LauncherModel通过自身实现的OnReceive方法来接收来自不同地方的广播</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public void onReceive(Context context, Intent intent) &#123;</div><div class="line">       if (DEBUG_RECEIVER) Log.d(TAG, &quot;onReceive intent=&quot; + intent);</div><div class="line"></div><div class="line">       final String action = intent.getAction();</div><div class="line">       if (Intent.ACTION_LOCALE_CHANGED.equals(action)) &#123;</div><div class="line">           // If we have changed locale we need to clear out the labels in all apps/workspace.</div><div class="line">           forceReload();</div><div class="line">       &#125; else if (SearchManager.INTENT_GLOBAL_SEARCH_ACTIVITY_CHANGED.equals(action)) &#123;</div><div class="line">           Callbacks callbacks = getCallback();</div><div class="line">           if (callbacks != null) &#123;</div><div class="line">               callbacks.bindSearchProviderChanged();</div><div class="line">           &#125;</div><div class="line">       &#125; else if (LauncherAppsCompat.ACTION_MANAGED_PROFILE_ADDED.equals(action)</div><div class="line">               || LauncherAppsCompat.ACTION_MANAGED_PROFILE_REMOVED.equals(action)) &#123;</div><div class="line">           UserManagerCompat.getInstance(context).enableAndResetCache();</div><div class="line">           forceReload();</div><div class="line">       &#125;</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<p>对于LauncherModel来说，系统的语言配置属性变化或者设备中的mcc码配置发生了改变，需要对桌面上的组件产生影响，例如，当语言配置属性发生改变的时候，设备上的显示信息需要更新成相应的语言，因此我们需要对Launcher管理的应用程序的快捷方式等桌面组件进行一次整体更新。</p>
+<p>3、LauncherModel的应用程序级别接口</p>
+<p>LauncherModel作为Launcher的枢纽，绝大多数时间是在处理Launcher应用程序通过调用LauncherModel的接口发来的请求，比如当第三方应用程序安装通过接口往桌面上添加快捷方式的时候，当用户安装或者卸载某个应用程序的时候，以及当Launcher启动初期时，都需要LauncherModel为Launcher应用程序提供必要的接口以及正确的数据。</p>
+<p>下面按接口来看下他们的实现</p>
+<p>① 启动加载任务startLoader<br>这是一个用于指示LauncherModel进行桌面以及应用程序菜单数据加载的接口。Launcher在启动或者被恢复的时候，Launcher都会通过这个接口来进行数据加载。他的声明如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void startLoader(int synchronousBindPage, int loadFlags) &#123;&#125;；</div></pre></td></tr></table></figure>
+<p>它没有返回值，因为在加载的过程中，会通过Launcher注册的回调接口得到数据处理的中间过程<br>输入参数的含义</p>
+<ul>
+<li>synchronousBindPage 这是一个整型的输入参数，调用方通过定制这个参数的值来指示LauncherModel加载对应的桌面页数据，当输入-1001时（在pageview中定义）将会对当前Launcher上维护的所有桌面页上的数据进行加载。</li>
+<li>loadFlags 这是一个整型的输入参数，调用者通过这个参数来指示LauncherModel的加载任务应该执行的动作，LauncherModel提供了3中不同的选项</li>
+</ul>
+<ol>
+<li>LOADER_FLAG_CLEAR_WORKSPACE 用于指示LauncherModel对synchronousBindPage 参数指定的桌面数据进行清理</li>
+<li>LOADER_FLAG_MIGRATE_SHORTCUTS  用于指示LauncherModel对Launcher2的快捷方式数据进行迁移。</li>
+<li>LOADER_FLAG_NONE 用于指示LauncherModel对Launcher3的桌面数据进行一次加载或者刷新。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">public void startLoader(int synchronousBindPage, int loadFlags) &#123;</div><div class="line">     // Enable queue before starting loader. It will get disabled in Launcher#finishBindingItems</div><div class="line">     InstallShortcutReceiver.enableInstallQueue();</div><div class="line">     synchronized (mLock) &#123;</div><div class="line">         // Clear any deferred bind-runnables from the synchronized load process</div><div class="line">         // We must do this before any loading/binding is scheduled below.</div><div class="line">         synchronized (mDeferredBindRunnables) &#123;</div><div class="line">             mDeferredBindRunnables.clear();</div><div class="line">         &#125;</div><div class="line"></div><div class="line">         // Don&apos;t bother to start the thread if we know it&apos;s not going to do anything</div><div class="line">         if (mCallbacks != null &amp;&amp; mCallbacks.get() != null) &#123;</div><div class="line">             // If there is already one running, tell it to stop.</div><div class="line">             stopLoaderLocked();</div><div class="line">             mLoaderTask = new LoaderTask(mApp.getContext(), loadFlags);</div><div class="line">             if (synchronousBindPage != PagedView.INVALID_RESTORE_PAGE</div><div class="line">                     &amp;&amp; mAllAppsLoaded &amp;&amp; mWorkspaceLoaded &amp;&amp; !mIsLoaderTaskRunning) &#123;</div><div class="line">                 mLoaderTask.runBindSynchronousPage(synchronousBindPage);</div><div class="line">             &#125; else &#123;</div><div class="line">                 sWorkerThread.setPriority(Thread.NORM_PRIORITY);</div><div class="line">                 sWorker.post(mLoaderTask);</div><div class="line">             &#125;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>具体实现如上。<br>在Launcher内部，所有的桌面数据的操作请求都通过这个方法来处理，因此startLoader需要保证在多个请求并发的情况。正是基于这个原因LauncherModel的startLoader方法的方法体都被包含在一个同步块中。</p>
+<p>Launcher和LauncherModel之间的交互式是以类似消息驱动的方式进行的。LauncherModel产生的消息通过Launcher注册到LauncherModel中的回调接口，并得到通知。而当LauncherModel完成一次加载的时候，通过finishBindingItems接口通知Launcher加载已经完成，如果当前只是对桌面的某一个页面进行数据刷新，那么这个接口的调用会被封装成为一个任务加载到一个消息队列中，等待后续所有的任务完成后才统一执行，如果这个任务还没有得到执行，而新的刷新页面的请求已经到来，那么LauncherModel在启动加载之前会将消息队列清空，以确保所在任务都执行完成后。Launcher才会得到通知具体实现如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">synchronized (mDeferredBindRunnables) &#123;</div><div class="line">               mDeferredBindRunnables.clear();</div><div class="line">           &#125;</div></pre></td></tr></table></figure>
+<p>mDeferredBindRunnables是一个Runable的列表，当LauncherModel的加载任务完成后，这里将会保存发往Launcher的通知，封装在一个Runable中加入该列表。</p>
+<p>接下来LauncherModel将决策加载任务(LoaderTask）的执行方式是即时执行环视线程调度执行。<br>如果LauncherModel接收到的是对指定页面的刷新任务，LauncherModel还需要对应用程序菜单及桌面数据的加载完成情况做判断，如果他们的数据都已经加载完成则当前加载任务将会即时执行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mLoaderTask.runBindSynchronousPage(synchronousBindPage);</div></pre></td></tr></table></figure>
+<p>如果当前选择的是对所有桌面页数据进行加载这类大量数据的请求，或者桌面以及应用程序菜单的数据的加载工作并未完成，那么这个任务将会被放置在lauModel创建的线程的线程队列中等待执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sWorkerThread.setPriority(Thread.NORM_PRIORITY);</div><div class="line">                   sWorker.post(mLoaderTask);</div></pre></td></tr></table></figure>
+<p>② 停止加载</p>
+<p>LauncherModel在需要停止加载任务的时候通过调用stopLoaderLocked方法来完成。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">private void stopLoaderLocked() &#123;</div><div class="line">      LoaderTask oldTask = mLoaderTask;</div><div class="line">      if (oldTask != null) &#123;</div><div class="line">          oldTask.stopLocked();</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>它是LauncherModel的一个工具不对外公开，不需要任何参数，只负责将正在运行的任务停掉。</p>
+<p>③ LauncherModel的工作线程</p>
+<p>在LauncherModel中定义了一个静态线程变量sWorkerThread，所有需要等待加载的任务都被抛到该线程的队列中等待处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@Thunk static final HandlerThread sWorkerThread = new HandlerThread(&quot;launcher-loader&quot;);</div><div class="line">  static &#123;</div><div class="line">      sWorkerThread.start();</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>这样设计能确保sWorkerThread 在LauncherModel类被加载的时候就已经存在，并处于运行状态。<br>另外HandlerThread是Thread的一个子类，这种类型的线程能确保消息队列中的每个请求按照先进先出的顺序执行。<br>在启动LauncherModel的工作线程后，紧接着LauncherModel还接管了工作线程的消息队列 如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@Thunk static final Handler sWorker = new Handler(sWorkerThread.getLooper());</div></pre></td></tr></table></figure>
+<p>当完成以上一系列动作后，LauncherModel就完成了对工作线程的初始化，这个线程将会一直处于消息等待状态，等待每一个刷新请求，支持LauncherModel的工作线程创建并且启动完成。</p>
+<p>④ LauncherModel的主线程处理器</p>
+<p>LauncherModel的sWorkerThread是主线程下的一个子线程，它负责接收来自Launcher应用程序组件的刷新请求，对于sWorkerThread而言，在处理任务的同时也需要与Launcher有所交互，比如sWorkerThread需要将处理进程消息通过Launcher注册到LauncherModel中的接口通知Launcher，以便Launcher做出必要的响应。</p>
+<p>那么现在的问题就是Launcher和LauncherModel运行在Launcher这个应用程序的主线程中（这个线程由Android框架维护） sWorkerThread只是Launcher应用程序主线程下的一个子线程，对于线程和线程之间的消息交互，一个比较好的方案是将任务抛到目标线程的处理器中，为此，LauncherModel为sWorkerThread在主线程中创建了一个处理器，以实现sWorkerThread和Launcher所在进程之间的信息交互。代码如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DeferredHandler mHandler = new DeferredHandler();</div></pre></td></tr></table></figure>
+<p>这里引入了一个定义在LauncherModel外面而在LauncherModel中使用的线程处理器工具DeferredHandler。 接下来看下它的实现原理</p>
+<p>DeferredHandler被当做主线程的处理器实例化在LauncherModel中，作为处理器，它需要满足通用处理器的一些定制化特性，因此它定义了一些嵌套类来满足这些特性。</p>
+<ul>
+<li><p>Impl类</p>
+<p>它首先是被定义在DeferredHandler的一个嵌套类。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class Impl extends Handler implements MessageQueue.IdleHandler &#123;</div></pre></td></tr></table></figure>
+<p>作为handler的子类，它主要被用于处理发往主线程的消息。</p>
+<ul>
+<li><p>IdleRunnable类</p>
+<p>IdleRunnable是DeferredHandler内部的另外一个嵌套类，它是一个实现了Run那边了接口的类</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">private class IdleRunnable implements Runnable &#123;</div><div class="line">      Runnable mRunnable;</div><div class="line"></div><div class="line">      IdleRunnable(Runnable r) &#123;</div><div class="line">          mRunnable = r;</div><div class="line">      &#125;</div><div class="line"></div><div class="line">      public void run() &#123;</div><div class="line">          mRunnable.run();</div><div class="line">      &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>由它的构造函数以及实现的run接口可知，它实际上只是Runnable的简单实现。<br>这些类的具体使用我们后续继续分析。</p>
+<p>好了 今天主要看了LauncherModel的创建，实例化（构造函数）和与LauncherModel的通信方式。</p>
+<p>终于可以歇口气了。</p>
 
       
 
@@ -267,7 +353,7 @@ http://developer.sonymobile.com/2014/04/22/sony-contributes-runtime-resource-ove
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/01/Android RRO机制的运用-----google开机向导客制化/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/01/android M Launcher之LauncherModel （一）/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -281,7 +367,7 @@ http://developer.sonymobile.com/2014/04/22/sony-contributes-runtime-resource-ove
   
 <nav id="article-nav">
   
-    <a href="/2017/03/01/android自定义View之3D索引效果/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/03/01/android M Launcher之LauncherModel （二）/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -291,8 +377,8 @@ http://developer.sonymobile.com/2014/04/22/sony-contributes-runtime-resource-ove
     </a>
   
   
-    <a href="/2017/02/28/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2017/03/01/android自定义View之3D索引效果/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
   
