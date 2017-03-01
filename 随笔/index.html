@@ -6,27 +6,48 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>android自定义View之3D索引效果 | Solary的博客</title>
+  <title>相册 | Solary的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="效果图：
-我的小霸王太卡了。
-最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="android自定义View之3D索引效果">
-<meta property="og:url" content="http://yoursite.com/2017/03/01/android自定义View之3D索引效果/index.html">
+  <meta name="description" content="Ins
+	摄影
+
+
+	图片来自instagram，正在加载中…
+
+
+  (function() {
+    var loadScript = function(path) {
+      var $script = document.createElement(&apos;script&apos;)
+      document.getElementsByTagName(&apos;body&apos;)[0].appendChi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="相册">
+<meta property="og:url" content="http://yoursite.com/随笔/index.html">
 <meta property="og:site_name" content="Solary的博客">
-<meta property="og:description" content="效果图：
-我的小霸王太卡了。
-最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。">
-<meta property="og:image" content="http://img.blog.csdn.net/20161211004615856?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20161211005108312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-03-01T03:49:51.871Z">
+<meta property="og:description" content="Ins
+	摄影
+
+
+	图片来自instagram，正在加载中…
+
+
+  (function() {
+    var loadScript = function(path) {
+      var $script = document.createElement(&apos;script&apos;)
+      document.getElementsByTagName(&apos;body&apos;)[0].appendChi">
+<meta property="og:updated_time" content="2016-12-30T22:16:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android自定义View之3D索引效果">
-<meta name="twitter:description" content="效果图：
-我的小霸王太卡了。
-最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20161211004615856?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta name="twitter:title" content="相册">
+<meta name="twitter:description" content="Ins
+	摄影
+
+
+	图片来自instagram，正在加载中…
+
+
+  (function() {
+    var loadScript = function(path) {
+      var $script = document.createElement(&apos;script&apos;)
+      document.getElementsByTagName(&apos;body&apos;)[0].appendChi">
   
     <link rel="alternative" href="/atom.xml" title="Solary的博客" type="application/atom+xml">
   
@@ -158,49 +179,42 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-android自定义View之3D索引效果" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-photos" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      android自定义View之3D索引效果
+      相册
     </h1>
   
 
-        
-        <a href="/2017/03/01/android自定义View之3D索引效果/" class="archive-article-date">
-  	<time datetime="2017-03-01T02:27:05.304Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-01</time>
-</a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>效果图：<br><img src="http://img.blog.csdn.net/20161211004615856?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>我的小霸王太卡了。</p>
-<p>最近工作比较忙，今天搞了一下午才搞出来这个效果，这种效果有很多种实现方式，最常见的应该是用贝塞尔曲线实现的。今天我们来看另一种不同的实现方式，只需要用到  canvas.scale()，有没有很好奇是怎么实现的呢。<br><a id="more"></a><br>首先来说一下思路，只要有了思路剩下的就是往里面套代码了。</p>
-<p>通过观察上面的效果图我们发现可以把右边的字母分为三种类型<br>1、 手指没触摸的地方显示正常的样式<br>2、手指触摸的位置 显示最大且完全不透明<br>3、手指触摸位置的上下附近位置 有放大且有透明度变化</p>
-<p>对这个效果有了直观的认识后，我们就可以在ondraw里面根据不同的条件来分别画出这三种状态，这里主要难理解的就是这些条件。这需要结合代码看下。</p>
-<p>so  我们开始撸码吧，</p>
-<p>1、先初始化一些需要的变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">private void init(Context context) &#123;</div><div class="line">       mPaint = new Paint();</div><div class="line">       mPaint.setAntiAlias(true);</div><div class="line">       mPaint.setColor(Color.GRAY);</div><div class="line">       mLetters = context.getResources().getStringArray(R.array.letter_list);</div><div class="line">       mPaint.setTextAlign(Paint.Align.CENTER);</div><div class="line">       mTouchSlop = ViewConfiguration.get(context).getScaledTouchSlop();</div><div class="line">       mDensity  = getContext().getResources().getDisplayMetrics().density;</div><div class="line">       setPadding(0,dip2px(20),0,dip2px(20));</div><div class="line">   &#125;</div><div class="line"></div><div class="line">private int dip2px(int dipPx)&#123;</div><div class="line">       return (int)(dipPx*mDensity+0.5);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>相信上面这些应该没什么难度吧。<br>另外把一些需要的宽高属性赋值一下，因为下面会用到它们</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">   protected void onSizeChanged(int w, int h, int oldw, int oldh) &#123;</div><div class="line">       super.onSizeChanged(w, h, oldw, oldh);</div><div class="line"></div><div class="line">       mHeight = h - getPaddingTop() - getPaddingBottom();</div><div class="line">       mWidth = w - dip2px(16);</div><div class="line">       mLetterHeight = mHeight / mLetters.length;</div><div class="line">       int textSize = (int)(mLetterHeight*0.7);</div><div class="line">       mPaint.setTextSize(textSize);</div><div class="line">       mIsDownRect.set(w-dip2px(32),0,w,h);</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-<p>这里主要就是mIsDownRect这个要注意一下它是索引列表的范围，但是我们并不需要画出它。<br>2、在ontouch方法中对触摸事件进行必要的处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">public boolean onTouchEvent(MotionEvent event) &#123;</div><div class="line">       int action = event.getAction();</div><div class="line">        switch (action)&#123;</div><div class="line">            case MotionEvent.ACTION_DOWN:</div><div class="line">                mIsBeingDragger = false;</div><div class="line">                float initDownY = event.getY();</div><div class="line">                if(!mIsDownRect.contains(event.getX(),event.getY()))&#123;</div><div class="line">                    return false;</div><div class="line">                &#125;</div><div class="line">                mInitDownY = initDownY;</div><div class="line">                break;</div><div class="line">            case MotionEvent.ACTION_MOVE:</div><div class="line">                float y = event.getY();</div><div class="line">                float diff = Math.abs(y - mInitDownY);</div><div class="line">                if(diff&gt;mTouchSlop&amp;&amp;!mIsBeingDragger)&#123;</div><div class="line">                    mIsBeingDragger = true;</div><div class="line">                &#125;</div><div class="line">                if(mIsBeingDragger)&#123;</div><div class="line">                    mY = y;</div><div class="line">                    float moveY = y - getPaddingTop();</div><div class="line">                    int chartIndex = (int) (moveY / mHeight * mLetters.length);//获取索引位置的index</div><div class="line">                    if(mChoose!=chartIndex)&#123;</div><div class="line">                        if(chartIndex&gt;=0&amp;&amp;chartIndex&lt;mLetters.length) &#123;</div><div class="line">                            if (slidViewListener != null) &#123;</div><div class="line">                                Log.i(&quot;lly&quot;,&quot;chartIndex = &quot;+chartIndex);</div><div class="line">                                slidViewListener.onChange(mLetters[chartIndex]);</div><div class="line">                            &#125;</div><div class="line">                            mChoose = chartIndex;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                    invalidate();</div><div class="line">                &#125;</div><div class="line">                break;</div><div class="line">            case MotionEvent.ACTION_UP:</div><div class="line">            case MotionEvent.ACTION_CANCEL:</div><div class="line">                mIsBeingDragger = false;</div><div class="line">                mChoose = -1;</div><div class="line">                invalidate();</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        return true;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p>这里面也很简单，首先当手指按下时记录下按下位置的Y坐标，然后判断按下的位置是否在索引列表的区域范围内(索引的区域在初始化赋值的时候已经确定过了)如果不在就没必要执行下去了 直接返回false即可，<br>然后在手指移动的时候判断下是否是在移动是的话就把mIsBeingDragger置为true，如果mIsBeingDragger为true说明正在移动 ，这时候就计算出当前手指所在的索引位置，并通过回调方式通知外面当前的位置，最后把索引位置赋给全局变量mChoose，并刷新UI。<br>手指抬起时进行一些复位操作。<br>以上就是ontouch的全部方法。</p>
-<p>3、在ondraw方法里面画出索引字母</p>
-<p>这里要画出那三种类型的字母索引，我们先从简单的来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">float lettersPos= mLetterHeight*(i+1)+getPaddingTop(); //下一个字母的Y值坐标</div><div class="line">          float diffY; // Y 方向的偏移量</div><div class="line">          float diffX;//X 方向的偏移量</div><div class="line">          float diff;//缩放比例</div><div class="line">if (mChoose == i&amp;&amp;i!=0&amp;&amp;i!=mLetters.length-1) &#123;</div><div class="line">    diff = 2.2f;</div><div class="line">    diffX=0f;</div><div class="line">    diffY=0f;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>mChoose 是在ontouch中我们记录的索引位置，当上面条件成立时说明当前就是选中的字母，这时候让它缩放比例最大，偏移量我们会在下面统一处理。<br>接下来处理不是选中的情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">float distanseDiff = Math.abs((mY - lettersPos)/mHeight);//计算手指触摸位置的上下附近位置</div><div class="line">                float maxPos = distanseDiff * 7;//乘7是因为这个系数太小了需要给他一个放大</div><div class="line">                if(distanseDiff&lt;0.174)&#123;</div><div class="line">                    diff = 2.2f - maxPos;</div><div class="line">                &#125;else &#123;</div><div class="line">                    diff = 1f;</div><div class="line">                &#125;</div><div class="line"></div><div class="line">                if(!mIsBeingDragger)&#123;</div><div class="line">                    diff =1;</div><div class="line">                &#125;</div><div class="line">                diffX  = maxPos *  50;</div><div class="line">                if(mY&gt;lettersPos)&#123;</div><div class="line">                    diffY = maxPos*50;</div><div class="line">                &#125;else &#123;</div><div class="line">                    diffY = - maxPos*50;</div><div class="line">                &#125;</div></pre></td></tr></table></figure>
-<p>这里主要就是那个缩放系数比较难算 需要多试下。<br>X Y方向的偏移量如下图<br><img src="http://img.blog.csdn.net/20161211005108312?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYXNkMTAzMQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>这些都计算好后就可以画了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">canvas.save();</div><div class="line">           canvas.scale(diff,diff,mWidth*1.2f+diffX,lettersPos+diffY);</div><div class="line">           if(diff ==1)&#123;</div><div class="line">               mPaint.setAlpha(255);</div><div class="line">               mPaint.setTypeface(Typeface.DEFAULT);</div><div class="line"></div><div class="line">           &#125;else &#123;</div><div class="line">               int alpha = (int) (255*(1-Math.min(0.9,diff -1)));</div><div class="line">               if(mChoose == i)&#123;</div><div class="line">                   alpha = 255;</div><div class="line"></div><div class="line">               &#125;</div><div class="line">               mPaint.setAlpha(alpha);</div><div class="line">               mPaint.setTypeface(Typeface.DEFAULT_BOLD);</div><div class="line">           &#125;</div><div class="line">           Log.i(&quot;lly&quot;,&quot;mLetters[&quot;+i+&quot;] = &quot; +mLetters[i] );</div><div class="line">           canvas.drawText(mLetters[i],mWidth,lettersPos,mPaint);</div><div class="line">           canvas.restore();</div></pre></td></tr></table></figure>
-<p>可以发现canvas.scale(diff,diff,mWidth*1.2f+diffX,lettersPos+diffY); 这一句才是整个自定义view的关键 它前两个参数是x轴和y轴的缩放系数，后两个参数是x轴和y轴的锚点，我主要是试出来的,这两个参数比较难理解,还需要多家学习。到这里就已经实现了我们最上面的效果了。</p>
-<p><a href="http://download.csdn.net/detail/asd1031/9707837" target="_blank" rel="external">源码</a></p>
+        <link rel="stylesheet" href="./ins.css">
+<div class="photos-btn-wrap">
+	<a class="photos-btn active" href="javascript:void(0)" target="_blank" rel="external">Ins</a>
+	<a class="photos-btn" target="_blank" href="http://litten.me/gallery/">摄影</a>
+</div>
+<div class="instagram itemscope">
+	<a href="https://www.instagram.com/litten225/" target="_blank" class="open-ins">图片来自instagram，正在加载中…</a>
+</div>
+<script>
+  (function() {
+    var loadScript = function(path) {
+      var $script = document.createElement('script')
+      document.getElementsByTagName('body')[0].appendChild($script)
+      $script.setAttribute('src', path)
+    }
+    setTimeout(function() {
+      loadScript('./ins.js')
+    }, 0)
+  })()
+</script>
 
       
 
@@ -280,7 +294,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/01/android自定义View之3D索引效果/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/随笔/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -292,25 +306,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/2017/03/01/android M Launcher之LauncherModel （一）/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          android M Launcher之LauncherModel （一）
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/03/01/Android RRO机制的运用-----google开机向导客制化/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Android RRO机制的运用-----google开机向导客制化</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 
 
@@ -343,7 +338,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
