@@ -18,7 +18,7 @@ android M Launcher之LauncherModel （二）
 <meta property="og:description" content="通过前两篇的分析，我们已经知道了LauncherModel的初始化及工作流程，如果您还不熟悉的话请看前两篇博文android M Launcher之LauncherModel （一）
 android M Launcher之LauncherModel （二）
 了解了LauncherModel的工作过程后，我们继续来学习LauncherModel中提供的一些工具，从而了解Google工程师在自家系上怎">
-<meta property="og:updated_time" content="2017-03-01T02:42:41.893Z">
+<meta property="og:updated_time" content="2017-03-01T03:46:44.418Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android M Launcher之LauncherModel （三）">
 <meta name="twitter:description" content="通过前两篇的分析，我们已经知道了LauncherModel的初始化及工作流程，如果您还不熟悉的话请看前两篇博文android M Launcher之LauncherModel （一）
@@ -178,6 +178,7 @@ android M Launcher之LauncherModel （二）
         <p>通过前两篇的分析，我们已经知道了LauncherModel的初始化及工作流程，如果您还不熟悉的话请看前两篇博文<br><a href="http://blog.csdn.net/asd1031/article/details/53314252" target="_blank" rel="external">android M Launcher之LauncherModel （一）</a></p>
 <p><a href="http://blog.csdn.net/asd1031/article/details/53344724" target="_blank" rel="external">android M Launcher之LauncherModel （二）</a></p>
 <p>了解了LauncherModel的工作过程后，我们继续来学习LauncherModel中提供的一些工具，从而了解Google工程师在自家系上怎么开发的。</p>
+<a id="more"></a>
 <p>1、线程等待waitForIdle</p>
 <p> 我们在这个系列第二篇开始讲LoaderTask的run方法时，在加载绑定桌面数据之后，加载与绑定应用程序之前，有一个等待动作即调用了waitForIdle方法，为什么要去调这个方法呢，大家都知道在绑定桌面数据时我们是去UI线程中处理的，接触过应用开发的都知道UI线程正常情况下是不能阻塞的，否则有可能产生ANR，这将严重影响用户体验。所有这里LoaderTask在将结果发送给UI线程之后，为了保证界面绑定任务可以高效的完成，往往会将自己的任务暂停下来，等待UI线程处理完成。不知道大家有没有这样设计过，反正我是没有。从这儿也可以看出Google工程师是比较严谨的。</p>
 <p> 那我们就来分析下waitForIdle函数是怎么实现的。 </p>
